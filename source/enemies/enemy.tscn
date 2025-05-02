@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu0fgh3xbdbk"]
+
+[ext_resource type="Script" uid="uid://cokt5xx05ji6a" path="res://source/enemies/enemy.gd" id="1_0ehif"]
+[ext_resource type="SpriteFrames" uid="uid://uedtf5upfdta" path="res://source/enemies/goblin_sprite_frames.tres" id="2_a281l"]
+[ext_resource type="Script" uid="uid://bp43jl78kyygq" path="res://source/enemies/enemy_body.gd" id="2_q4rrw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qy03c"]
+size = Vector2(69, 76)
+
+[node name="Enemy" type="PathFollow2D"]
+rotates = false
+loop = false
+script = ExtResource("1_0ehif")
+
+[node name="Body" type="CharacterBody2D" parent="."]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("2_q4rrw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Body"]
+sprite_frames = ExtResource("2_a281l")
+animation = &"walking"
+autoplay = "walking"
+frame_progress = 0.085594
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_qy03c")

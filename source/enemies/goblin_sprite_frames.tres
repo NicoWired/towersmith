@@ -1,0 +1,53 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://uedtf5upfdta"]
+
+[ext_resource type="Texture2D" uid="uid://cigpd08m5lwog" path="res://assets/tiny_swords/Factions/Goblins/Troops/Torch/Yellow/Torch_Yellow.png" id="1_bcg3q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2yi1"]
+atlas = ExtResource("1_bcg3q")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6kqg"]
+atlas = ExtResource("1_bcg3q")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkygx"]
+atlas = ExtResource("1_bcg3q")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e35ma"]
+atlas = ExtResource("1_bcg3q")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkiao"]
+atlas = ExtResource("1_bcg3q")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gf5um"]
+atlas = ExtResource("1_bcg3q")
+region = Rect2(960, 192, 192, 192)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2yi1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6kqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkygx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e35ma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkiao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gf5um")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 10.0
+}]

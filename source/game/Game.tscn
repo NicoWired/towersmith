@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://c182k65uiwpye"]
+
+[ext_resource type="Script" uid="uid://bm8q76flb6ewf" path="res://source/game/game.gd" id="1_2mpuo"]
+[ext_resource type="PackedScene" uid="uid://xhgxenba5rn5" path="res://source/levels/Level0.tscn" id="2_pufbh"]
+[ext_resource type="PackedScene" uid="uid://ce03tgyb1xpta" path="res://source/buildings/castle/Castle.tscn" id="3_7luj1"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_2mpuo")
+
+[node name="Level0" parent="." instance=ExtResource("2_pufbh")]
+
+[node name="Castle" parent="." instance=ExtResource("3_7luj1")]
+position = Vector2(196, 256)

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bexi4xhm25wl0"]
+
+[ext_resource type="Texture2D" uid="uid://c2vbjtexn3a8a" path="res://assets/tiny_swords/Factions/Knights/Buildings/Tower/Tower_Blue.png" id="1_1p430"]
+[ext_resource type="Script" uid="uid://cfpjxo8o6alb3" path="res://source/buildings/towers/tower.gd" id="2_xkfnw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xkfnw"]
+resource_local_to_scene = true
+
+[node name="Tower" type="Sprite2D"]
+z_index = 1
+texture = ExtResource("1_1p430")
+script = ExtResource("2_xkfnw")
+
+[node name="RangeArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangeArea"]
+position = Vector2(2, 1)
+shape = SubResource("CircleShape2D_xkfnw")
+
+[node name="ArrowCDTimer" type="Timer" parent="."]
+one_shot = true

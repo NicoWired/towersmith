@@ -27,6 +27,7 @@ folder_colors={
 2d_physics/layer_1="Castle"
 2d_physics/layer_2="Projectile"
 2d_physics/layer_3="Enemy"
+2d_physics/layer_4="Tower"
 
 [rendering]
 

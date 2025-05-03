@@ -31,6 +31,6 @@ func initialize(
 	initialized = true
 
 func on_body_entered(body) -> void:
-	print("arrow hit")
 	var enemy: Enemy = body.get_parent()
 	enemy.take_damage(damage)
+	queue_free()

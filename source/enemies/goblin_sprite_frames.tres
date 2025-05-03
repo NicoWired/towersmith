@@ -1,6 +1,31 @@
-[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://uedtf5upfdta"]
+[gd_resource type="SpriteFrames" load_steps=15 format=3 uid="uid://uedtf5upfdta"]
 
 [ext_resource type="Texture2D" uid="uid://cigpd08m5lwog" path="res://assets/tiny_swords/Factions/Goblins/Troops/Torch/Yellow/Torch_Yellow.png" id="1_bcg3q"]
+[ext_resource type="Texture2D" uid="uid://cuny3wq5o3wlp" path="res://assets/tiny_swords/Factions/Goblins/Troops/Torch/Blue/Torch_Blue.png" id="1_x2yi1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2kop"]
+atlas = ExtResource("1_x2yi1")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjjth"]
+atlas = ExtResource("1_x2yi1")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v050f"]
+atlas = ExtResource("1_x2yi1")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02jl7"]
+atlas = ExtResource("1_x2yi1")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajx5i"]
+atlas = ExtResource("1_x2yi1")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6j7l4"]
+atlas = ExtResource("1_x2yi1")
+region = Rect2(960, 192, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x2yi1"]
 atlas = ExtResource("1_bcg3q")
@@ -30,6 +55,29 @@ region = Rect2(960, 192, 192, 192)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_b2kop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjjth")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v050f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02jl7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajx5i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6j7l4")
+}],
+"loop": true,
+"name": &"walking_blue",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_x2yi1")
 }, {
 "duration": 1.0,
@@ -48,6 +96,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_gf5um")
 }],
 "loop": true,
-"name": &"walking",
+"name": &"walking_yellow",
 "speed": 10.0
 }]

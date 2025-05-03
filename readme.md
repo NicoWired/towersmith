@@ -14,3 +14,16 @@
 
 # Towersmith
 An upcoming tower defense gaame! It will be developed live on Twich, so make sure to tune in! Check out the link on this page's header.
+
+
+# Assets
+
+**Tiny Swords**
+- Author: pixelfrog
+- Source: https://pixelfrog-assets.itch.io/tiny-swords
+- License: https://creativecommons.org/publicdomain/zero/1.0/
+
+**2D outline/inline shader**
+- Author: Juulpower
+- Source: https://godotshaders.com/shader/2d-outline-inline/
+- License: https://creativecommons.org/publicdomain/zero/1.0/

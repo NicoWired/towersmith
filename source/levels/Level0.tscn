@@ -22,3 +22,5 @@ tile_set = ExtResource("1_h4l07")
 
 [node name="EnemyPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_h4l07")
+
+[node name="EnemySpawnCD" type="Timer" parent="."]

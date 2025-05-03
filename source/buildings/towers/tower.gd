@@ -43,6 +43,7 @@ func on_timer_timeout() -> void:
 func shoot_arrow() -> void:
 	var arrow: Arrow = arrow_scene.instantiate()
 	arrow_direction = target.global_position - global_position
+	arrow.rotation = arrow_direction.angle()
 	arrow.initialize(damage, arrow_direction, projectile_speed)
 	call_deferred("add_child", arrow)
 	arrow_on_cd = true

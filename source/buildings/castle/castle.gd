@@ -7,7 +7,7 @@ func _ready() -> void:
 	castle_area.body_entered.connect(on_body_entered)
 	
 func on_body_entered(body):
-	if body is enemy_body:
+	if body.get_parent() is Enemy:
 		var enemy: Enemy = body.get_parent()
 		var damage_taken: float = enemy.deal_damage()
 		take_damage(damage_taken)

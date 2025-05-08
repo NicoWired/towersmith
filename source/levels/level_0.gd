@@ -17,11 +17,10 @@ func _ready() -> void:
 	enemy_spawn_cd.wait_time = 1
 	enemy_spawn_cd.timeout.connect(on_enemy_spawn_cd_timeout)
 	enemy_spawn_cd.start()
+	GlobalEvents.buildings_changed.emit()
 
 func on_enemy_spawn_cd_timeout() -> void:
 	current_second += 1
-	print(current_second)
-	print(current_second in enemy_wave.keys())
 	if current_second in enemy_wave.keys():
 		var enemy: Enemy = preload("res://source/enemies/enemy.tscn").instantiate()
 		enemy.initialize(enemy_wave[current_second])

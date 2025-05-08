@@ -1,9 +1,7 @@
 class_name Arrow
 extends CharacterBody2D
 
-# stats
-var damage: float
-var speed: float
+var arrow_stats: ArrowStats = ArrowStats.new()
 
 var direction: Vector2
 var initialized: bool = false
@@ -18,19 +16,14 @@ func _ready() -> void:
 	area_2d.body_entered.connect(on_body_entered)
 
 func _process(delta: float) -> void:
-	position += speed * delta * direction
+	position += arrow_stats.speed * delta * direction
 
-func initialize(
-		input_damage: float
-		,input_direction: Vector2
-		,input_speed
-		) -> void:
-	damage = input_damage
-	speed = input_speed
-	direction = input_direction
+func initialize(input_stats: ArrowStats, arrow_direction: Vector2) -> void:
+	arrow_stats = input_stats
+	direction = arrow_direction
 	initialized = true
 
 func on_body_entered(body) -> void:
 	var enemy: Enemy = body.get_parent()
-	enemy.take_damage(damage)
+	enemy.take_damage(arrow_stats.damage)
 	queue_free()

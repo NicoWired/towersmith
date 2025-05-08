@@ -1,10 +1,11 @@
 extends Sprite2D
 
 var health: float = 500.0
-@onready var castle_area: Area2D = $Area2D
+@onready var hitbox: Area2D = $Hitbox
+@onready var hitbox_shape: CollisionShape2D = $Hitbox/HitboxShape
 
 func _ready() -> void:
-	castle_area.body_entered.connect(on_body_entered)
+	hitbox.body_entered.connect(on_body_entered)
 	
 func on_body_entered(body):
 	if body.get_parent() is Enemy:

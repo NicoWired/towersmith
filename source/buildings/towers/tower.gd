@@ -1,21 +1,27 @@
 class_name Tower
 extends Sprite2D
 
-# stats
-var damage: float = 10.0
-var tower_range: float = 150.0
-var projectile_speed: float = 5.0
-#var aspd: float = 
+# arrow stats
+var arrow_stats: ArrowStats = ArrowStats.new()
 
+# tower stats
+var aspd: float
+var tower_range: float = 150.0
+
+# arrows
 var arrow_scene: PackedScene = preload("res://source/projectiles/Arrow.tscn")
 var arrow_on_cd: bool = false
+var arrow_direction: Vector2
+
+# targeting
 var target_list: Array[CharacterBody2D] = []
 var target: CharacterBody2D
-var arrow_direction: Vector2
 
 @onready var range_area: Area2D = $RangeArea
 @onready var collision_shape_2d: CollisionShape2D = $RangeArea/CollisionShape2D
 @onready var arrow_cd_timer: Timer = $ArrowCDTimer
+@onready var hitbox: Area2D = $Hitbox
+@onready var hitbox_shape: CollisionShape2D = $Hitbox/HitboxShape
 
 
 func _ready() -> void:
@@ -44,7 +50,7 @@ func shoot_arrow() -> void:
 	var arrow: Arrow = arrow_scene.instantiate()
 	arrow_direction = target.global_position - global_position
 	arrow.rotation = arrow_direction.angle()
-	arrow.initialize(damage, arrow_direction, projectile_speed)
+	arrow.initialize(arrow_stats, arrow_direction)
 	call_deferred("add_child", arrow)
 	arrow_on_cd = true
 	arrow_cd_timer.start() 

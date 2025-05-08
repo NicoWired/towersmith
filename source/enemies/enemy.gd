@@ -16,7 +16,7 @@ var initialized: bool = false
 @onready var body: CharacterBody2D = $Body
 
 func _ready() -> void:
-	assert(initialized, "Please initialize the enemy with an enemy_resource")
+	assert(initialized, "Please initialize the enemy with an EnemyResource")
 	enemy_animation.play(animation_name)
 	enemy_animation.material = enemy_animation.material.duplicate()
 	enemy_animation.material.set_shader_parameter("color",outline_color)

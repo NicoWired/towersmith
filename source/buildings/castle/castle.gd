@@ -1,6 +1,6 @@
 extends Sprite2D
 
-var health: float = 500.0
+var health: float = 200.0
 @onready var hitbox: Area2D = $Hitbox
 @onready var hitbox_shape: CollisionShape2D = $Hitbox/HitboxShape
 

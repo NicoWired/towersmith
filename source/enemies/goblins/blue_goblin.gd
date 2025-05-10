@@ -10,4 +10,4 @@ func _init() -> void:
 	
 	# visuals
 	animation_name = "walking_blue"
-	outline_color = Color(0.69, 1.0, 0.69)
+	outline_color = Color(0.69, 1.0, 0.69, 0)

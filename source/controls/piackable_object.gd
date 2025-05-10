@@ -2,6 +2,7 @@ class_name PickableObject
 extends Control
 
 const SPRITE_DIMENSIONS: int = 128
+const PRICE: int = 60
 
 @warning_ignore("integer_division")
 var shape_points: Array[Vector2] = [
@@ -24,6 +25,7 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 			"size": Vector2(128,128),
 			"offset": Vector2(0,64),
 			"shape_points": shape_points,
-			"area": $Sprite2D/Area2D.duplicate()
+			"area": $Sprite2D/Area2D.duplicate(),
+			"price": PRICE
 		}
 	)

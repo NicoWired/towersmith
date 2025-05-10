@@ -5,6 +5,7 @@ extends PathFollow2D
 var speed: float
 var damage: float
 var health: float 
+var bounty: int
 
 # visuals
 var animation_name: StringName
@@ -45,6 +46,7 @@ func initialize(init_values) -> void:
 	speed = enemy_resources.speed
 	damage = enemy_resources.damage
 	health = enemy_resources.health
+	bounty = enemy_resources.bounty
 	animation_name = enemy_resources.animation_name
 	outline_color = enemy_resources.outline_color
 	initialized = true
@@ -55,4 +57,6 @@ func deal_damage() -> float:
 func take_damage(damage_taken: float) -> void:
 	health -= damage_taken
 	if health <= 0:
+		Economy.current_gold += bounty
+		Economy.gold_changed.emit()
 		queue_free()

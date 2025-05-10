@@ -44,7 +44,7 @@ tile_set = ExtResource("2_p21y6")
 curve = SubResource("Curve2D_h4l07")
 
 [node name="Castle" parent="." instance=ExtResource("3_ho887")]
-position = Vector2(1285, 224)
+position = Vector2(1248, 223)
 
 [node name="EnemySpawnCD" type="Timer" parent="."]
 
@@ -74,3 +74,14 @@ metadata/_custom_type_script = "uid://cnq58v2b3u4xq"
 polygon = PackedVector2Array(68, 328, 249, 327, 248, 503, 120, 505, 122, 764, 314, 769, 314, 894, 579, 894, 576, 577, 769, 576, 766, 385, 827, 385, 827, 767, 1090, 772, 1087, 641, 1281, 640, 1279, 156, 1211, 159, 1209, 69, 1455, 71, 1456, 126, 1523, 135, 1525, 307, 1464, 306, 1461, 432, 1339, 433, 1333, 690, 1273, 688, 1269, 885, 698, 890, 694, 953, 69, 952)
 
 [node name="Shop" parent="." instance=ExtResource("6_3eaae")]
+
+[node name="GoldLabel" type="Label" parent="."]
+offset_left = 1645.0
+offset_top = 940.0
+offset_right = 1919.0
+offset_bottom = 1036.0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 48
+text = "Placeholder"
+horizontal_alignment = 1
+vertical_alignment = 1

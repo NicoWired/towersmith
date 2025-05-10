@@ -27,3 +27,13 @@ An upcoming tower defense gaame! It will be developed live on Twich, so make sur
 - Author: Juulpower
 - Source: https://godotshaders.com/shader/2d-outline-inline/
 - License: https://creativecommons.org/publicdomain/zero/1.0/
+
+
+wave generator:
+	create multiple waves of enemies programatically
+
+enemy variaty:
+	we only have 2 enemies, add more with different stats
+	
+tower upgrades:
+	all towers do the same, let them upgrade

@@ -23,10 +23,15 @@ func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 	data["preview"].preview_image.modulate = Color.RED
 	return false
 
-func _drop_data(at_position: Vector2, _data: Variant) -> void:
+func _drop_data(at_position: Vector2, data: Variant) -> void:
+	if Economy.current_gold < data["price"]:
+		print("not enough gold")
+		return
 	var new_tower: Tower = tower.duplicate()
 	new_tower.position = at_position + XY_OFFSET
 	new_tower.z_index = int(new_tower.global_position.y)
+	Economy.current_gold -= data["price"]
+	Economy.gold_changed.emit()
 	add_child(new_tower)
 	GlobalEvents.buildings_changed.emit()
 

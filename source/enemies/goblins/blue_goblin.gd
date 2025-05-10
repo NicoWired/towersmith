@@ -7,6 +7,7 @@ func _init() -> void:
 	speed = 100.0
 	damage = 10.0
 	health = 25.0
+	bounty = 1
 	
 	# visuals
 	animation_name = "walking_blue"

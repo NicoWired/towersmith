@@ -10,8 +10,5 @@ func _ready() -> void:
 func try_drop_tower(points_to_check: Array) -> bool:
 	for point:Vector2 in points_to_check:
 		if not Geometry2D.is_point_in_polygon(point, polygon_global_position):
-			#print("points to check drop aera %s:  " % str(points_to_check))
-			#print(point)
-			#print(polygon_global_position)
 			return false
 	return true

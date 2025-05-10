@@ -1,8 +1,7 @@
 class_name Arrow
 extends CharacterBody2D
 
-var arrow_stats: ArrowStats = ArrowStats.new()
-
+var arrow_stats: ArrowStats
 var direction: Vector2
 var initialized: bool = false
 

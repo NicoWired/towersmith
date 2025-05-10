@@ -11,6 +11,7 @@ var animation_name: StringName
 var outline_color: Color
 
 var previous_x: float
+var previous_y: float
 var initialized: bool = false
 @onready var enemy_animation: AnimatedSprite2D = $Body/AnimatedSprite2D
 @onready var body: CharacterBody2D = $Body
@@ -22,13 +23,22 @@ func _ready() -> void:
 	enemy_animation.material.set_shader_parameter("color",outline_color)
 
 func _process(delta: float) -> void:
+	# move along the road
 	progress += speed * delta
+	
+	# flip sprite if X direction changed
 	var current_x: float = position.x
 	if current_x < previous_x:
 		enemy_animation.flip_h = true
 	elif current_x > previous_x:
 		enemy_animation.flip_h = false
 	previous_x = current_x
+	
+	# update z_index if Y changed
+	var current_y: float = position.y
+	if current_y != previous_y:
+		z_index = int(global_position.y)
+	previous_y = current_y
 
 func initialize(init_values) -> void:
 	var enemy_resources: EnemyResource = init_values.new()

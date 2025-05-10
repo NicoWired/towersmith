@@ -29,7 +29,8 @@ window/stretch/mode="viewport"
 
 folder_colors={
 "res://assets/": "yellow",
-"res://source/": "blue"
+"res://source/": "blue",
+"res://source/GUI/": "green"
 }
 
 [global_group]

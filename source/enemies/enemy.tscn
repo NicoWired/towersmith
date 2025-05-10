@@ -16,7 +16,6 @@ shader_parameter/add_margins = true
 size = Vector2(48, 60)
 
 [node name="Enemy" type="PathFollow2D"]
-y_sort_enabled = true
 rotates = false
 loop = false
 script = ExtResource("1_0ehif")

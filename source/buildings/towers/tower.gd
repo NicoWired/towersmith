@@ -1,12 +1,11 @@
 class_name Tower
 extends Sprite2D
 
-# arrow stats
-var arrow_stats: ArrowStats = ArrowStats.new()
+signal upgrade_requested
 
-# tower stats
-var aspd: float
-var tower_range: float = 150.0
+# stats
+var building_stats: TowerStats = TowerStats.new()
+var arrow_stats: ArrowStats = building_stats.arrow_stats
 
 # arrows
 var arrow_scene: PackedScene = preload("res://source/projectiles/Arrow.tscn")
@@ -25,15 +24,22 @@ var target: CharacterBody2D
 
 
 func _ready() -> void:
-	collision_shape_2d.shape.radius = tower_range
+	set_building_stats()
+	
+	# connect signals
 	range_area.body_entered.connect(on_body_entered)
 	range_area.body_exited.connect(on_body_exited)
 	arrow_cd_timer.timeout.connect(on_timer_timeout)
+	$TextureButton.pressed.connect(on_upgrade_requested)
 
 func _process(_delta: float) -> void:
 	if len(target_list) > 0 and not arrow_on_cd:
 		target = acquire_target()
 		shoot_arrow()
+
+func set_building_stats() -> void:
+	#range
+	collision_shape_2d.shape.radius = building_stats.get_tower_range()
 
 func on_body_entered(body) -> void:
 	target_list.append(body)
@@ -59,3 +65,6 @@ func acquire_target() -> CharacterBody2D:
 	var chosen_target: CharacterBody2D
 	chosen_target = target_list.pick_random()
 	return chosen_target
+
+func on_upgrade_requested() -> void:
+	upgrade_requested.emit(self)

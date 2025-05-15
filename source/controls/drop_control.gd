@@ -1,14 +1,14 @@
 class_name DropControl
 extends Control
 
+signal building_placed
+
 const XY_OFFSET: Vector2 = Vector2(64,0)
 
 var tower: Tower = preload("res://source/buildings/towers/Tower.tscn").instantiate()
 var points_to_check: Array
 var occupied_areas: Array[CollisionShape2D]
 
-func _ready() -> void:
-	GlobalEvents.buildings_changed.connect(get_occupied_areas)
 
 func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 	if "preview" in data:
@@ -33,7 +33,8 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 	Economy.current_gold -= data["price"]
 	Economy.gold_changed.emit()
 	add_child(new_tower)
-	GlobalEvents.buildings_changed.emit()
+	get_occupied_areas()
+	building_placed.emit(new_tower)
 
 func get_occupied_areas():
 	var buildings: Array[Node] = get_tree().get_nodes_in_group("buildings")

@@ -15,7 +15,7 @@ func _ready() -> void:
 	area_2d.body_entered.connect(on_body_entered)
 
 func _process(delta: float) -> void:
-	position += arrow_stats.speed * delta * direction
+	position += arrow_stats.get_speed() * delta * direction
 
 func initialize(input_stats: ArrowStats, arrow_direction: Vector2) -> void:
 	arrow_stats = input_stats
@@ -24,5 +24,5 @@ func initialize(input_stats: ArrowStats, arrow_direction: Vector2) -> void:
 
 func on_body_entered(body) -> void:
 	var enemy: Enemy = body.get_parent()
-	enemy.take_damage(arrow_stats.damage)
+	enemy.take_damage(arrow_stats.get_damage())
 	queue_free()

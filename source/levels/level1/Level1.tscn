@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://dn8d5l7xn6mhg"]
+[gd_scene load_steps=9 format=4 uid="uid://dn8d5l7xn6mhg"]
 
 [ext_resource type="Script" uid="uid://du2venn8s0ln6" path="res://source/levels/level1/level1.gd" id="1_27su2"]
 [ext_resource type="TileSet" uid="uid://dbuoem2h83kg4" path="res://source/levels/levels_tile_set.tres" id="2_p21y6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c4ksix6auf8dy" path="res://source/controls/drop_control.gd" id="4_b6prr"]
 [ext_resource type="Script" uid="uid://cnq58v2b3u4xq" path="res://source/controls/drop_area.gd" id="5_ocgwi"]
 [ext_resource type="PackedScene" uid="uid://3vrv2phvtk8g" path="res://source/GUI/shop.tscn" id="6_3eaae"]
+[ext_resource type="PackedScene" uid="uid://cqom6kxl3fsjd" path="res://source/GUI/upgrade_window/upgrade_window.tscn" id="7_cn2cc"]
 
 [sub_resource type="Curve2D" id="Curve2D_h4l07"]
 _data = {
@@ -85,3 +86,6 @@ theme_override_font_sizes/font_size = 48
 text = "Placeholder"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="UpgradeWindow" parent="." instance=ExtResource("7_cn2cc")]
+z_index = 2000

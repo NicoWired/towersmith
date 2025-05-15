@@ -52,11 +52,17 @@ var current_wave: int = 0
 @onready var enemy_path: Path2D = $EnemyPath
 @onready var enemy_spawn_cd: Timer = $EnemySpawnCD
 @onready var gold_label: Label = $GoldLabel
+@onready var upgrade_window: Control = $UpgradeWindow
+@onready var drop_control: DropControl = $DropControl
+
 
 
 func _ready() -> void:
 	# Assign starting gold:
 	Economy.current_gold += 200
+	
+	# Update location of starting buildings
+	drop_control.get_occupied_areas()
 	
 	# spawn enemies
 	enemy_spawn_cd.autostart = true
@@ -66,10 +72,12 @@ func _ready() -> void:
 	enemy_spawn_cd.start()
 	
 	# connect signals
-	GlobalEvents.buildings_changed.emit()
 	Economy.gold_changed.connect(on_gold_changed)
+	drop_control.building_placed.connect(on_building_placed)
+	upgrade_window.visibility_changed.connect(on_upgrade_window_visibility_changed)
 	
 	# update GUI
+	upgrade_window.visible = false
 	on_gold_changed()
 
 func on_enemy_spawn_cd_timeout() -> void:
@@ -86,3 +94,13 @@ func on_enemy_spawn_cd_timeout() -> void:
 
 func on_gold_changed() -> void:
 	gold_label.text = "Gold: %s" % str(Economy.current_gold)
+
+func on_building_placed(building: Tower) -> void:
+	building.upgrade_requested.connect(on_building_upgrade_requested)
+	
+func on_building_upgrade_requested(building: Tower) -> void:
+	upgrade_window.update(building)
+	upgrade_window.visible = true
+
+func on_upgrade_window_visibility_changed() -> void:
+	get_tree().paused = upgrade_window.visible

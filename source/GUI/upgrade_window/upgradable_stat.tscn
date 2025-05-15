@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2n4bs8hk4dnc"]
+
+[ext_resource type="Script" uid="uid://u1pmoe62hjko" path="res://source/GUI/upgrade_window/upgradable_stat.gd" id="1_38us2"]
+[ext_resource type="Texture2D" uid="uid://dsd0k05ocokga" path="res://assets/tiny_swords/UI/Buttons/Button_Blue.png" id="1_yljg8"]
+[ext_resource type="Texture2D" uid="uid://btc0svpw4pljn" path="res://assets/tiny_swords/UI/Buttons/Button_Blue_Pressed.png" id="2_38us2"]
+
+[node name="UpgradableStat" type="Control"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_38us2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StatNameLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Tower Range:"
+
+[node name="UpgradeLevelLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "150"
+
+[node name="UpgradeButton" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_yljg8")
+texture_pressed = ExtResource("2_38us2")
+stretch_mode = 0

@@ -4,6 +4,7 @@ extends CharacterBody2D
 var arrow_stats: ArrowStats
 var direction: Vector2
 var initialized: bool = false
+var has_hit: bool = false
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var area_2d: Area2D = $Area2D
@@ -23,6 +24,8 @@ func initialize(input_stats: ArrowStats, arrow_direction: Vector2) -> void:
 	initialized = true
 
 func on_body_entered(body) -> void:
-	var enemy: Enemy = body.get_parent()
-	enemy.take_damage(arrow_stats.get_damage())
-	queue_free()
+	if not has_hit:
+		has_hit = true
+		var enemy: Enemy = body.get_parent()
+		enemy.take_damage(arrow_stats.get_damage())
+		queue_free()

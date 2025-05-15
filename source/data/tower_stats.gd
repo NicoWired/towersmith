@@ -7,6 +7,7 @@ var stat_list: Dictionary[StringName,Variant] = {
 	"tower_range": {
 		"base_vlaue": 150.0
 		, "upgrade_level": 0
+		, "max_level": 3
 	},
 	"arrow_stats": arrow_stats
 }

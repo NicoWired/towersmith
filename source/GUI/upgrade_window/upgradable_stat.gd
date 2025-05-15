@@ -5,6 +5,7 @@ signal stat_changed
 
 var stat_name: String
 var upgrade_level: int
+var max_level: int
 var name_translation: Dictionary[StringName,String] = {
 	"tower_range": "Range"
 	,"arrow_stats.damage": "Damage"
@@ -21,7 +22,8 @@ func _ready() -> void:
 	stat_name_label.text = name_translation[stat_name]
 
 func on_stat_upgrade() -> void:
-	upgrade_level += 1
-	upgrade_level_label.text = str(upgrade_level)
-	stat_changed.emit(self)
+	if upgrade_level < max_level:
+		upgrade_level += 1
+		upgrade_level_label.text = str(upgrade_level)
+		stat_changed.emit(self)
 	

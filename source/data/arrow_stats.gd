@@ -4,10 +4,12 @@ extends Resource
 var damage: Dictionary[StringName,float] = {
 	"base_value": 10.0
 	,"upgrade_level": 0
+	,"max_level": 5
 }
 var speed: Dictionary[StringName,float] = {
-	"base_value": 5.0
+	"base_value": 1300.0
 	,"upgrade_level": 0
+	,"max_level": 5
 }
 
 var stat_list: Dictionary[StringName, Dictionary] = {
@@ -16,7 +18,7 @@ var stat_list: Dictionary[StringName, Dictionary] = {
 }
 
 func get_damage() -> float:
-	return damage["base_value"] + damage["base_value"] * damage["upgrade_level"] * 0.1
+	return damage["base_value"] + damage["base_value"] * damage["upgrade_level"]**2 * 0.1
 
 func get_speed() -> float:
 	return speed["base_value"] + speed["base_value"] * speed["upgrade_level"] * 0.1

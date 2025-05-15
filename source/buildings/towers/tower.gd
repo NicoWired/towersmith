@@ -56,7 +56,7 @@ func shoot_arrow() -> void:
 	var arrow: Arrow = arrow_scene.instantiate()
 	arrow_direction = target.global_position - global_position
 	arrow.rotation = arrow_direction.angle()
-	arrow.initialize(arrow_stats, arrow_direction)
+	arrow.initialize(arrow_stats, arrow_direction.normalized())
 	call_deferred("add_child", arrow)
 	arrow_on_cd = true
 	arrow_cd_timer.start() 

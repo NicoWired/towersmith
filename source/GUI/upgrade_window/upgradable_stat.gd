@@ -6,6 +6,7 @@ signal stat_changed
 var stat_name: String
 var upgrade_level: int
 var max_level: int
+var upgrade_cost: Array
 var name_translation: Dictionary[StringName,String] = {
 	"tower_range": "Range"
 	,"arrow_stats.damage": "Damage"
@@ -23,7 +24,10 @@ func _ready() -> void:
 
 func on_stat_upgrade() -> void:
 	if upgrade_level < max_level:
-		upgrade_level += 1
-		upgrade_level_label.text = str(upgrade_level)
-		stat_changed.emit(self)
-	
+		var cost: int = upgrade_cost[upgrade_level]
+		if cost <= Economy.current_gold:
+			Economy.current_gold -= cost
+			Economy.gold_changed.emit()
+			upgrade_level += 1
+			upgrade_level_label.text = str(upgrade_level)
+			stat_changed.emit(self)

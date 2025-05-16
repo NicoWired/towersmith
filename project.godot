@@ -41,6 +41,7 @@ buildings=""
 [gui]
 
 theme/custom="uid://cnh4lw4smnxj"
+theme/custom_font="uid://nhn7273enf33"
 
 [layer_names]
 

@@ -3,19 +3,20 @@ extends Control
 
 signal stat_changed
 
-var stat_name: String
-var upgrade_level: int
-var max_level: int
-var upgrade_cost: Array
+var stat_name: String = "test"
+var upgrade_level: int = 0
+var max_level: int = 5
+var upgrade_cost: Array = [1,2,3,4,5]
 var name_translation: Dictionary[StringName,String] = {
 	"tower_range": "Range"
 	,"arrow_stats.damage": "Damage"
 	,"arrow_stats.speed": "Speed"
+	,"test": "Test"
 }
 
-@onready var stat_name_label: Label = $HBoxContainer/StatNameLabel
-@onready var upgrade_level_label: Label = $HBoxContainer/UpgradeLevelLabel
-@onready var upgrade_button: TextureButton = $HBoxContainer/UpgradeButton
+@onready var stat_name_label: Label = %StatContainer/StatNameLabel
+@onready var upgrade_level_label: Label = %StatContainer/UpgradeLevelLabel
+@onready var upgrade_button: TextureButton = %StatContainer/UpgradeButton
 
 func _ready() -> void:
 	upgrade_button.pressed.connect(on_stat_upgrade)
@@ -27,7 +28,6 @@ func on_stat_upgrade() -> void:
 		var cost: int = upgrade_cost[upgrade_level]
 		if cost <= Economy.current_gold:
 			Economy.current_gold -= cost
-			Economy.gold_changed.emit()
 			upgrade_level += 1
 			upgrade_level_label.text = str(upgrade_level)
 			stat_changed.emit(self)

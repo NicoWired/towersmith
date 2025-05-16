@@ -1,19 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://ce03tgyb1xpta"]
+[gd_scene load_steps=6 format=3 uid="uid://ce03tgyb1xpta"]
 
 [ext_resource type="Texture2D" uid="uid://coga1djo3ii0s" path="res://assets/tiny_swords/Factions/Knights/Buildings/Castle/Castle_Blue.png" id="1_n63ut"]
 [ext_resource type="Script" uid="uid://g1rmeprm1hk7" path="res://source/buildings/castle/castle.gd" id="2_s3trv"]
+[ext_resource type="Texture2D" uid="uid://b0mx3cirkjwcb" path="res://assets/tiny_swords/Factions/Knights/Buildings/Castle/Castle_Destroyed.png" id="3_aaysh"]
+[ext_resource type="PackedScene" uid="uid://jivtsbkhwat3" path="res://source/decorations/fire.tscn" id="3_pmt45"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s3trv"]
 size = Vector2(287, 194)
 
-[node name="Castle" type="Sprite2D" groups=["buildings"]]
-texture = ExtResource("1_n63ut")
+[node name="Node2D" type="Node2D" groups=["buildings"]]
 script = ExtResource("2_s3trv")
+
+[node name="CastleSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_n63ut")
+
+[node name="Fire" parent="CastleSprite" instance=ExtResource("3_pmt45")]
+visible = false
+position = Vector2(0, -40)
+
+[node name="Fire2" parent="CastleSprite" instance=ExtResource("3_pmt45")]
+visible = false
+position = Vector2(-102, 47)
+
+[node name="Fire3" parent="CastleSprite" instance=ExtResource("3_pmt45")]
+visible = false
+position = Vector2(102, 20)
+
+[node name="CastleDestroyed" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_aaysh")
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 17
 collision_mask = 20
+metadata/_edit_lock_ = true
 
 [node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-0.5, 14)
 shape = SubResource("RectangleShape2D_s3trv")
+metadata/_edit_lock_ = true

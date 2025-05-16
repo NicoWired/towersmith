@@ -28,6 +28,15 @@ An upcoming tower defense gaame! It will be developed live on Twich, so make sur
 - Source: https://godotshaders.com/shader/2d-outline-inline/
 - License: https://creativecommons.org/publicdomain/zero/1.0/
 
+**MedievalSharp**
+- Author: Wojciech Kalinowski
+- Source: https://fonts.google.com/specimen/MedievalSharp
+- License: https://fonts.google.com/specimen/MedievalSharp/license
+
+**Market Day**
+- Author: RandomMind
+- Source: https://opengameart.org/content/medieval-market-day
+- License: https://creativecommons.org/publicdomain/zero/1.0/
 
 wave generator:
 	create multiple waves of enemies programatically

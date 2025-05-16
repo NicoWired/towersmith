@@ -5,7 +5,7 @@ var building_to_upgrade: Tower
 var base_upgradable_stat: UpgradableStat = preload("res://source/GUI/upgrade_window/upgradable_stat.tscn").instantiate()
 
 @onready var close_button: TextureButton = %CloseButton
-@onready var upgrades_container: VBoxContainer = %UpgradesContainer
+@onready var upgrades_container: GridContainer = %UpgradesContainer
 
 
 func _ready() -> void:

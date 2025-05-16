@@ -31,7 +31,6 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 	new_tower.position = at_position + XY_OFFSET
 	new_tower.z_index = int(new_tower.global_position.y)
 	Economy.current_gold -= data["price"]
-	Economy.gold_changed.emit()
 	add_child(new_tower)
 	get_occupied_areas()
 	building_placed.emit(new_tower)

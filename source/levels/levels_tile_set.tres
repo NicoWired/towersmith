@@ -1,9 +1,10 @@
-[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://dbuoem2h83kg4"]
+[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://dbuoem2h83kg4"]
 
 [ext_resource type="Texture2D" uid="uid://bm7gwr6g8n182" path="res://assets/tiny_swords/Terrain/Ground/Tilemap_Flat.png" id="1_vccw1"]
 [ext_resource type="Texture2D" uid="uid://dgybnqldx5ugr" path="res://assets/tiny_swords/Terrain/Ground/Tilemap_Elevation.png" id="2_jlava"]
 [ext_resource type="Texture2D" uid="uid://cjc6p6jng6jb4" path="res://assets/tiny_swords/Terrain/Water/Water.png" id="3_h5q61"]
 [ext_resource type="Texture2D" uid="uid://dh4gcf47pprxw" path="res://assets/tiny_swords/Terrain/Bridge/Bridge_All.png" id="4_iomne"]
+[ext_resource type="Texture2D" uid="uid://dblcs7j7oddlf" path="res://assets/tiny_swords/Terrain/Water/Foam/Foam.png" id="5_3nj72"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jlava"]
 texture = ExtResource("1_vccw1")
@@ -315,6 +316,24 @@ texture_region_size = Vector2i(64, 64)
 1:1/0 = 0
 2:1/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rp5cn"]
+texture = ExtResource("5_3nj72")
+texture_region_size = Vector2i(64, 64)
+0:0/size_in_atlas = Vector2i(3, 3)
+0:0/animation_columns = 8
+0:0/animation_speed = 5.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/animation_frame_5/duration = 1.0
+0:0/animation_frame_6/duration = 1.0
+0:0/animation_frame_7/duration = 1.0
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 5
+
 [resource]
 tile_size = Vector2i(64, 64)
 terrain_set_0/mode = 2
@@ -328,7 +347,10 @@ terrain_set_0/terrain_3/name = "Water"
 terrain_set_0/terrain_3/color = Color(0.872929, 0.477256, 0.227082, 1)
 terrain_set_0/terrain_4/name = "Bridge"
 terrain_set_0/terrain_4/color = Color(0.131795, 0.398603, 0.887856, 1)
+terrain_set_0/terrain_5/name = "Foam"
+terrain_set_0/terrain_5/color = Color(0.646349, 0.0596289, 0.828627, 1)
 sources/0 = SubResource("TileSetAtlasSource_jlava")
 sources/1 = SubResource("TileSetAtlasSource_h5q61")
 sources/2 = SubResource("TileSetAtlasSource_iomne")
 sources/3 = SubResource("TileSetAtlasSource_3nj72")
+sources/6 = SubResource("TileSetAtlasSource_rp5cn")

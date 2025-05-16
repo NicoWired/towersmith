@@ -51,17 +51,18 @@ var current_wave: int = 0
 
 @onready var enemy_path: Path2D = $EnemyPath
 @onready var enemy_spawn_cd: Timer = $EnemySpawnCD
-@onready var gold_label: Label = $GoldLabel
 @onready var upgrade_window: Control = $UpgradeWindow
 @onready var drop_control: DropControl = $DropControl
+@onready var side_menu: SideMenu = $SideMenu
+@onready var bgm: AudioStreamPlayer = $BGM
 
 
 
 func _ready() -> void:
-	# Assign starting gold:
+	# assign starting gold:
 	Economy.current_gold += 200
 	
-	# Update location of starting buildings
+	# update location of starting buildings
 	drop_control.get_occupied_areas()
 	
 	# spawn enemies
@@ -79,6 +80,10 @@ func _ready() -> void:
 	# update GUI
 	upgrade_window.visible = false
 	on_gold_changed()
+	
+	# play music
+	#bgm.play()
+
 
 func on_enemy_spawn_cd_timeout() -> void:
 	current_second += 1
@@ -93,7 +98,7 @@ func on_enemy_spawn_cd_timeout() -> void:
 			enemy_spawn_cd.stop()
 
 func on_gold_changed() -> void:
-	gold_label.text = "Gold: %s" % str(Economy.current_gold)
+	side_menu.gold_label.text = "Gold: %s" % str(Economy.current_gold)
 
 func on_building_placed(building: Tower) -> void:
 	building.upgrade_requested.connect(on_building_upgrade_requested)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2n4bs8hk4dnc"]
+[gd_scene load_steps=6 format=3 uid="uid://d2n4bs8hk4dnc"]
 
 [ext_resource type="Script" uid="uid://u1pmoe62hjko" path="res://source/GUI/upgrade_window/upgradable_stat.gd" id="1_38us2"]
 [ext_resource type="Texture2D" uid="uid://dsd0k05ocokga" path="res://assets/tiny_swords/UI/Buttons/Button_Blue.png" id="1_yljg8"]
 [ext_resource type="Texture2D" uid="uid://btc0svpw4pljn" path="res://assets/tiny_swords/UI/Buttons/Button_Blue_Pressed.png" id="2_38us2"]
 [ext_resource type="StyleBox" uid="uid://wmy5o54pt4me" path="res://source/themes/carved_3side_pannel.tres" id="2_87moa"]
+[ext_resource type="Texture2D" uid="uid://bkoftcki7m7tt" path="res://assets/tiny_swords/Resources/Resources/G_Idle_(NoShadow)_cropped.png" id="3_1ia86"]
 
 [node name="UpgradableStat" type="Control"]
 custom_minimum_size = Vector2(300, 100)
@@ -43,13 +44,27 @@ text = "Tower Range:"
 
 [node name="UpgradeLevelLabel" type="Label" parent="PanelContainer/MarginContainer/StatContainer"]
 layout_mode = 2
+size_flags_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "150"
 
+[node name="GoldIcon" type="TextureRect" parent="PanelContainer/MarginContainer/StatContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("3_1ia86")
+expand_mode = 3
+stretch_mode = 2
+
+[node name="CostLabel" type="Label" parent="PanelContainer/MarginContainer/StatContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "123"
+
 [node name="UpgradeButton" type="TextureButton" parent="PanelContainer/MarginContainer/StatContainer"]
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 8
 texture_normal = ExtResource("1_yljg8")
 texture_pressed = ExtResource("2_38us2")
 stretch_mode = 0

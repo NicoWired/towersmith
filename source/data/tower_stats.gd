@@ -8,7 +8,7 @@ var stat_list: Dictionary[StringName,Variant] = {
 		"base_vlaue": 150.0
 		, "upgrade_level": 0
 		, "max_level": 3
-		, "upgrade_cost": [20,40,60]
+		, "upgrade_cost": [20,40,60,90]
 	},
 	"arrow_stats": arrow_stats
 }

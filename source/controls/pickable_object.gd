@@ -3,16 +3,21 @@ extends Control
 
 const SPRITE_DIMENSIONS: int = 128
 const PRICE: int = 60
+const HITBOX_TOLERANCE:int = 16 # pixels allowed to overlap with other objects
+
+var min_coords: Vector2i = Vector2i.ZERO + Vector2i(HITBOX_TOLERANCE,HITBOX_TOLERANCE)
+var max_coords: Vector2i = Vector2i(SPRITE_DIMENSIONS,SPRITE_DIMENSIONS) - Vector2i(HITBOX_TOLERANCE,HITBOX_TOLERANCE)
 
 @warning_ignore("integer_division")
 var shape_points: Array[Vector2] = [
-	Vector2(0,0),
-	Vector2(0,SPRITE_DIMENSIONS),
-	Vector2(SPRITE_DIMENSIONS,0),
-	Vector2(SPRITE_DIMENSIONS,SPRITE_DIMENSIONS),
-	Vector2(SPRITE_DIMENSIONS/2,SPRITE_DIMENSIONS/2)
+	Vector2(min_coords.x,min_coords.y),
+	Vector2(min_coords.x,max_coords.y),
+	Vector2(max_coords.x,min_coords.y),
+	Vector2(max_coords.x,max_coords.y),
+	Vector2(max_coords.x/2,max_coords.y/2)
 ]
 @onready var preview_image: Sprite2D = $Sprite2D
+
 
 func _get_drag_data(at_position: Vector2) -> Variant:
 	var preview: PickableObject = self.duplicate()

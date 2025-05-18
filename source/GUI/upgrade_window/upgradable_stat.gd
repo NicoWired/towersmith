@@ -10,18 +10,21 @@ var upgrade_cost: Array = [1,2,3,4,5]
 var name_translation: Dictionary[StringName,String] = {
 	"tower_range": "Range"
 	,"arrow_stats.damage": "Damage"
-	,"arrow_stats.speed": "Speed"
+	,"arrow_stats.speed": "Arrow Speed"
 	,"test": "Test"
 }
 
 @onready var stat_name_label: Label = %StatContainer/StatNameLabel
 @onready var upgrade_level_label: Label = %StatContainer/UpgradeLevelLabel
 @onready var upgrade_button: TextureButton = %StatContainer/UpgradeButton
+@onready var cost_label: Label = $PanelContainer/MarginContainer/StatContainer/CostLabel
+
 
 func _ready() -> void:
 	upgrade_button.pressed.connect(on_stat_upgrade)
 	upgrade_level_label.text = str(upgrade_level)
-	stat_name_label.text = name_translation[stat_name]
+	stat_name_label.text = name_translation[stat_name] + ": "
+	cost_label.text = str(upgrade_cost[upgrade_level])
 
 func on_stat_upgrade() -> void:
 	if upgrade_level < max_level:
@@ -30,4 +33,5 @@ func on_stat_upgrade() -> void:
 			Economy.current_gold -= cost
 			upgrade_level += 1
 			upgrade_level_label.text = str(upgrade_level)
+			cost_label.text = str(upgrade_cost[upgrade_level])
 			stat_changed.emit(self)

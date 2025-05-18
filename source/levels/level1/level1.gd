@@ -98,7 +98,7 @@ func on_enemy_spawn_cd_timeout() -> void:
 			enemy_spawn_cd.stop()
 
 func on_gold_changed() -> void:
-	side_menu.gold_label.text = "Gold: %s" % str(Economy.current_gold)
+	side_menu.set_gold_label(Economy.current_gold)
 
 func on_building_placed(building: Tower) -> void:
 	building.upgrade_requested.connect(on_building_upgrade_requested)

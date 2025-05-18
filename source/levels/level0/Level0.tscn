@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ce03tgyb1xpta" path="res://source/buildings/castle/Castle.tscn" id="3_7jofe"]
 [ext_resource type="Script" uid="uid://cnq58v2b3u4xq" path="res://source/controls/drop_area.gd" id="4_7jofe"]
 [ext_resource type="Script" uid="uid://c4ksix6auf8dy" path="res://source/controls/drop_control.gd" id="4_ijpac"]
-[ext_resource type="PackedScene" uid="uid://3vrv2phvtk8g" path="res://source/GUI/SideMenu.tscn" id="6_a8hio"]
+[ext_resource type="PackedScene" uid="uid://3vrv2phvtk8g" path="res://source/GUI/side_menu/SideMenu.tscn" id="6_a8hio"]
 
 [sub_resource type="Curve2D" id="Curve2D_h4l07"]
 _data = {

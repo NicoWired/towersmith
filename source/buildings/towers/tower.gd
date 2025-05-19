@@ -21,16 +21,22 @@ var target: CharacterBody2D
 @onready var arrow_cd_timer: Timer = $ArrowCDTimer
 @onready var hitbox: Area2D = $Hitbox
 @onready var hitbox_shape: CollisionShape2D = $Hitbox/HitboxShape
+@onready var tower_click: TextureButton = $TowerClick
+@onready var hover_shader: Material = material
 
 
 func _ready() -> void:
 	set_building_stats()
+	material = null
 	
 	# connect signals
 	range_area.body_entered.connect(on_body_entered)
 	range_area.body_exited.connect(on_body_exited)
 	arrow_cd_timer.timeout.connect(on_timer_timeout)
-	$TextureButton.pressed.connect(on_upgrade_requested)
+	tower_click.pressed.connect(on_upgrade_requested)
+	tower_click.mouse_entered.connect(on_tower_hovered_in)
+	tower_click.mouse_exited.connect(on_tower_hovered_out)
+	
 
 func _process(_delta: float) -> void:
 	if len(target_list) > 0 and not arrow_on_cd:
@@ -68,3 +74,9 @@ func acquire_target() -> CharacterBody2D:
 
 func on_upgrade_requested() -> void:
 	upgrade_requested.emit(self)
+
+func on_tower_hovered_in() -> void:
+	material = hover_shader
+	
+func on_tower_hovered_out() -> void:
+	material = null

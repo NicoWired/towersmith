@@ -1,6 +1,8 @@
 class_name Enemy
 extends PathFollow2D
 
+signal died
+
 # stats
 var speed: float
 var damage: float
@@ -58,5 +60,5 @@ func take_damage(damage_taken: float) -> void:
 	health -= damage_taken
 	if health <= 0:
 		Economy.current_gold += bounty
-		Economy.gold_changed.emit()
+		died.emit()
 		queue_free()

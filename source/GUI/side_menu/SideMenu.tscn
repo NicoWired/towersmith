@@ -78,8 +78,10 @@ toggle_mode = true
 texture_normal = ExtResource("5_tsujs")
 texture_pressed = ExtResource("6_wb8d3")
 
-[node name="PlayButton" type="TextureButton" parent="MarginContainer/VBoxContainer/ControlsContainer"]
+[node name="PauseButton" type="TextureButton" parent="MarginContainer/VBoxContainer/ControlsContainer"]
 unique_name_in_owner = true
+process_mode = 3
 layout_mode = 2
+toggle_mode = true
 texture_normal = ExtResource("7_jjh12")
 texture_pressed = ExtResource("8_btwoq")

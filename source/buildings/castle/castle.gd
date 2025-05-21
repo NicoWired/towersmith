@@ -1,12 +1,14 @@
 class_name Castle
 extends Node2D
 
+signal castle_destroyed
+
 var health: float = 200.0
 var initial_health = health
 @onready var hitbox: Area2D = $Hitbox
 @onready var hitbox_shape: CollisionShape2D = $Hitbox/HitboxShape
 @onready var castle_sprite: Sprite2D = $CastleSprite
-@onready var castle_destroyed: Sprite2D = $CastleDestroyed
+@onready var castle_destroyed_sprite: Sprite2D = $CastleDestroyed
 @onready var fire: AnimatedSprite2D = $CastleSprite/Fire
 @onready var fire_2: AnimatedSprite2D = $CastleSprite/Fire2
 @onready var fire_3: AnimatedSprite2D = $CastleSprite/Fire3
@@ -35,7 +37,6 @@ func take_damage(damage: float) -> void:
 	if health/initial_health <= 0.25:
 		fire_3.visible = true
 	if health <= 0:
-		print("game over")
 		castle_sprite.visible = false
-		castle_destroyed.visible = true
-		
+		castle_destroyed_sprite.visible = true
+		castle_destroyed.emit()

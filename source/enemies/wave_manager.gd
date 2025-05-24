@@ -15,13 +15,13 @@ var enemies_killed: int
 
 func _ready() -> void:
 	add_child(spawn_cd)
+	spawn_cd.timeout.connect(spawn_enemy)
 	assert(initialized, "Please run initialize() before adding WaveManager to the scene tree")
 
 func initialize(input_path: Path2D) -> void:
 	spawn_cd.autostart = false
 	spawn_cd.one_shot = false
 	spawn_cd.wait_time = 1
-	spawn_cd.timeout.connect(spawn_enemy)
 	current_second = 0
 	current_wave = 0
 	enemies_killed = 0

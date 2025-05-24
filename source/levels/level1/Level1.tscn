@@ -55,7 +55,7 @@ tile_set = ExtResource("2_p21y6")
 curve = SubResource("Curve2D_h4l07")
 
 [node name="Castle" parent="." instance=ExtResource("3_ho887")]
-position = Vector2(1248, 223)
+position = Vector2(288, 442)
 
 [node name="DropControl" type="Control" parent="."]
 layout_mode = 3
@@ -66,10 +66,12 @@ offset_right = 1566.0
 offset_bottom = 1082.0
 script = ExtResource("4_b6prr")
 metadata/_custom_type_script = "uid://c4ksix6auf8dy"
+metadata/_edit_lock_ = true
 
 [node name="DropArea" type="Area2D" parent="DropControl"]
 script = ExtResource("5_ocgwi")
 metadata/_custom_type_script = "uid://cnq58v2b3u4xq"
+metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DropControl/DropArea"]
 position = Vector2(4, -8)
@@ -78,6 +80,7 @@ polygon = PackedVector2Array(316, 195, 318, 574, 189, 576, 189, 703, 380, 703, 3
 [node name="DropArea2" type="Area2D" parent="DropControl"]
 script = ExtResource("5_ocgwi")
 metadata/_custom_type_script = "uid://cnq58v2b3u4xq"
+metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DropControl/DropArea2"]
 polygon = PackedVector2Array(68, 313, 256, 313, 256, 504, 130, 505, 130, 759, 321, 760, 321, 886, 577, 885, 577, 568, 768, 568, 766, 376, 834, 376, 834, 759, 1090, 758, 1088, 632, 1279, 631, 1279, 156, 1211, 159, 1209, 58, 1467, 60, 1467, 123, 1530, 123, 1531, 308, 1471, 307, 1470, 436, 1341, 434, 1340, 691, 1281, 690, 1277, 883, 698, 890, 694, 953, 69, 952)

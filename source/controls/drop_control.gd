@@ -35,8 +35,9 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 	get_occupied_areas()
 	building_placed.emit(new_tower)
 
-func get_occupied_areas():
+func get_occupied_areas() -> void:
 	var buildings: Array[Node] = get_tree().get_nodes_in_group("buildings")
+	occupied_areas = []
 	for building: Node in buildings:
 		occupied_areas.append(building.hitbox_shape)
 

@@ -1,15 +1,18 @@
 class_name SideMenu
 extends PanelContainer
 
+signal play_requested
 signal pause_requested
 
 @onready var gold_label: Label = %GoldLabel
 @onready var mute_button: TextureButton = %MuteButton
 @onready var pause_button: TextureButton = %PauseButton
+@onready var play_button: TextureButton = %PlayButton
 
 func _ready() -> void:
 	mute_button.toggled.connect(on_mute_button_toggled)
 	pause_button.toggled.connect(on_pause_button_toggled)
+	play_button.pressed.connect(on_play_button_pressed)
 
 func on_mute_button_toggled(toggled: bool) -> void:
 	for child in get_tree().get_nodes_in_group("sound"):
@@ -17,6 +20,9 @@ func on_mute_button_toggled(toggled: bool) -> void:
 
 func on_pause_button_toggled(toggled: bool) -> void:
 	pause_requested.emit(toggled)
+
+func on_play_button_pressed() -> void:
+	play_requested.emit()
 
 func set_gold_label(gold: int) -> void:
 	var gold_text: String

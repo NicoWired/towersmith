@@ -4,7 +4,6 @@ extends Node2D
 enum game_states {
 	INITIAL,
 	RUNNING,
-	PAUSED,
 	OVER
 }
 
@@ -98,17 +97,9 @@ func on_building_upgrade_requested(building: Tower) -> void:
 func on_upgrade_window_visibility_changed() -> void:
 	get_tree().paused = upgrade_window.visible
 	side_menu.pause_button.disabled = upgrade_window.visible
-	if upgrade_window.visible:
-		game_state = game_states.PAUSED
-	else:
-		game_state = game_states.RUNNING
 
 func on_pause_requested(toggled: bool) -> void:
-	if game_state in [game_states.PAUSED, game_states.RUNNING]:
-		if toggled:
-			game_state = game_states.PAUSED
-		else:
-			game_state = game_states.RUNNING
+	if game_state == game_states.RUNNING:
 		pause_screen.visible = toggled
 		get_tree().paused = toggled
 

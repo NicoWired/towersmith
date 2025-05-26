@@ -55,7 +55,7 @@ tile_set = ExtResource("2_p21y6")
 curve = SubResource("Curve2D_h4l07")
 
 [node name="Castle" parent="." instance=ExtResource("3_ho887")]
-position = Vector2(288, 442)
+position = Vector2(1247, 221)
 
 [node name="DropControl" type="Control" parent="."]
 layout_mode = 3
@@ -76,6 +76,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DropControl/DropArea"]
 position = Vector2(4, -8)
 polygon = PackedVector2Array(316, 195, 318, 574, 189, 576, 189, 703, 380, 703, 381, 830, 510, 831, 511, 511, 702, 511, 702, 319, 892, 319, 894, 704, 1023, 703, 1024, 577, 1214, 576, 1218, 59, 1030, 61, 1030, 198, 769, 196, 767, 135, 451, 133, 451, 196)
+metadata/_edit_lock_ = true
 
 [node name="DropArea2" type="Area2D" parent="DropControl"]
 script = ExtResource("5_ocgwi")

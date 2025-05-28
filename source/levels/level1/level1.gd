@@ -36,6 +36,7 @@ func _ready() -> void:
 	side_menu.pause_requested.connect(on_pause_requested)
 	side_menu.play_requested.connect(start_wave)
 	castle.castle_destroyed.connect(on_castle_destroyed)
+	wave_manager.wave_finished.connect(on_wave_finished)
 	game_over.new_game_requested.connect(on_new_game_requested)
 	game_over.end_game_requested.connect(on_quit_game_requested)
 	
@@ -82,7 +83,8 @@ func start_wave() -> void:
 	side_menu.pause_button.disabled = false
 	if game_state == game_states.INITIAL:
 		game_state = game_states.RUNNING
-		wave_manager.spawn_cd.start()
+		#wave_manager.spawn_cd.start()
+		wave_manager.spawn_wave()
 
 func on_gold_changed() -> void:
 	side_menu.set_gold_label(Economy.current_gold)
@@ -119,3 +121,6 @@ func on_new_game_requested() -> void:
 	clear_board()
 	game_over.visible = false
 	get_tree().paused = false
+
+func on_wave_finished() -> void:
+	game_state = game_states.INITIAL

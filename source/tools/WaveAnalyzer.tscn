@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://pq6f22oeffoi"]
+
+[ext_resource type="Script" uid="uid://dybgl7aon1xf5" path="res://source/tools/wave_analyzer.gd" id="1_opemu"]
+
+[node name="WaveAnalyzer" type="Node"]
+script = ExtResource("1_opemu")

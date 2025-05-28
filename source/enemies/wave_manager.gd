@@ -32,43 +32,11 @@ func initialize(input_path: Path2D) -> void:
 	waves_over = false
 	initialized = true
 
-func spawn_enemy_() -> void:
-	if not waves_over:
-		current_second += 1
-		if current_second in enemy_waves[current_wave].keys():
-			var enemy: Enemy = base_enemy.duplicate()
-			enemy.died.connect(on_enemy_died)
-			enemy.initialize(enemy_waves[current_wave][current_second])
-			enemy_path.add_child(enemy)
-		if current_second >= enemy_waves[current_wave].keys().max():
-			current_wave += 1
-			current_second = 0
-			if current_wave >= enemy_waves.size():
-				waves_over = true
-				no_more_waves.emit()
-				spawn_cd.stop()
-
 func spawn_enemy(enemy_data) -> void:
 	var enemy: Enemy = base_enemy.duplicate()
 	enemy.died.connect(on_enemy_died)
 	enemy.initialize(enemy_data)
 	enemy_path.add_child(enemy)
-
-func spawn_wave_() -> void:
-	if not waves_over:
-		var wave: Dictionary[int,Variant] = enemy_waves[current_wave]
-		current_second += 1
-		if current_second in wave.keys():
-			spawn_enemy(wave[current_second])
-		if current_second >= wave.keys().max():
-			current_wave += 1
-			current_second = 0
-			spawn_cd.stop()
-			wave_finished.emit()
-			print("wave overrrrr")
-			if current_wave >= enemy_waves.size():
-				waves_over = true
-				no_more_waves.emit()
 
 func spawn_wave() -> void:
 	print("trying to spawn wave")

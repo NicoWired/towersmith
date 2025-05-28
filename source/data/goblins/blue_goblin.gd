@@ -6,7 +6,7 @@ func _init() -> void:
 	# stats
 	speed = 100.0
 	damage = 10.0
-	health = 25.0
+	health = 15.0
 	bounty = 1
 	
 	# visuals

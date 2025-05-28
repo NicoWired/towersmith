@@ -22,7 +22,6 @@ func on_pause_button_toggled(toggled: bool) -> void:
 	pause_requested.emit(toggled)
 
 func on_play_button_pressed() -> void:
-	print("play button pressed")
 	play_requested.emit()
 
 func set_gold_label(gold: int) -> void:

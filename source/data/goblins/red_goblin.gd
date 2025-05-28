@@ -4,9 +4,9 @@ extends EnemyResource
 
 func _init() -> void:
 	# stats
-	speed = 180.0
-	damage = 40.0
-	health = 35.0
+	speed = 135.0
+	damage = 30.0
+	health = 48.0
 	bounty = 5
 	
 	# visuals

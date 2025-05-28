@@ -88,7 +88,7 @@ polygon = PackedVector2Array(68, 313, 256, 313, 256, 504, 130, 505, 130, 759, 32
 
 [node name="UpgradeWindow" parent="." instance=ExtResource("7_cn2cc")]
 visible = false
-z_index = 2000
+z_index = 2500
 
 [node name="BGM" type="AudioStreamPlayer" parent="." groups=["sound"]]
 stream = ExtResource("9_kf0gc")
@@ -97,6 +97,7 @@ parameters/looping = true
 
 [node name="PauseScreen" type="Panel" parent="."]
 visible = false
+z_index = 2000
 offset_left = -6.0
 offset_top = -8.0
 offset_right = 1936.0
@@ -120,6 +121,7 @@ theme_override_font_sizes/font_size = 72
 text = "Game Paused"
 
 [node name="SideMenu" parent="." instance=ExtResource("6_3eaae")]
+z_index = 2000
 offset_left = 1537.0
 offset_top = 34.0
 offset_right = 1887.63
@@ -139,3 +141,12 @@ offset_top = 410.0
 offset_right = 684.0
 offset_bottom = 410.0
 size_flags_vertical = 4
+
+[node name="WaveIndicator" type="Label" parent="."]
+offset_left = 61.0
+offset_top = 41.0
+offset_right = 129.0
+offset_bottom = 60.0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 64
+text = "Wave: 69"

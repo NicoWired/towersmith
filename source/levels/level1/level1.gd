@@ -9,7 +9,7 @@ enum game_states {
 
 const INITIAL_GOLD: int = 200
 
-var current_wave: int = 0
+var current_wave: int
 var game_state: int = game_states.INITIAL
 var wave_manager: WaveManager = WaveManager.new()
 
@@ -22,6 +22,7 @@ var wave_manager: WaveManager = WaveManager.new()
 @onready var pause_screen: Panel = $PauseScreen
 @onready var game_over: GameOver = $GameOver
 @onready var castle: Castle = $Castle
+@onready var wave_indicator: Label = $WaveIndicator
 
 
 
@@ -60,6 +61,8 @@ func initialize() -> void:
 	wave_manager.initialize(enemy_path)
 	side_menu.pause_button.disabled = true
 	game_state = game_states.INITIAL
+	current_wave = 0
+	update_wave_indicator()
 	on_gold_changed()
 
 func clear_board() -> void:
@@ -75,15 +78,12 @@ func clear_board() -> void:
 	for child in drop_control.get_children():
 		if child is not Area2D:
 			child.free()
-	#await get_tree().get_frame()
-	#drop_control.call_deferred("get_occupied_areas")
 	drop_control.get_occupied_areas()
 
 func start_wave() -> void:
 	side_menu.pause_button.disabled = false
 	if game_state == game_states.INITIAL:
 		game_state = game_states.RUNNING
-		#wave_manager.spawn_cd.start()
 		wave_manager.spawn_wave()
 
 func on_gold_changed() -> void:
@@ -122,5 +122,10 @@ func on_new_game_requested() -> void:
 	game_over.visible = false
 	get_tree().paused = false
 
-func on_wave_finished() -> void:
+func on_wave_finished(new_wave: int) -> void:
+	current_wave = new_wave
+	update_wave_indicator()
 	game_state = game_states.INITIAL
+
+func update_wave_indicator() -> void:
+	wave_indicator.text = "Current wave: %s" % str(current_wave)

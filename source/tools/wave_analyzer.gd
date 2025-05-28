@@ -4,6 +4,7 @@ extends Node
 var wave_data: EnemyWaves = EnemyWaves.new()
 
 func _ready() -> void:
+	get_viewport().size = Vector2(1,1)
 	analyze_all_waves()
 
 func analyze_all_waves() -> void:

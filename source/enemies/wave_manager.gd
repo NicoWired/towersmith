@@ -39,15 +39,12 @@ func spawn_enemy(enemy_data) -> void:
 	enemy_path.add_child(enemy)
 
 func spawn_wave() -> void:
-	print("trying to spawn wave")
 	if not waves_over:
-		print("spawning wave")
 		wave_info = enemy_waves[current_wave]
 		spawn_cd.start()
 
 func wave_tick() -> void:
 	current_second += 1
-	print("wave tick %s" % str(current_second))
 	if current_second in wave_info.keys():
 		spawn_enemy(wave_info[current_second])
 	if current_second >= wave_info.keys().max():
@@ -57,10 +54,8 @@ func wave_over() -> void:
 	current_wave += 1
 	current_second = 0
 	spawn_cd.stop()
-	wave_finished.emit()
-	print("wave overrrrr")
+	wave_finished.emit(current_wave)
 	if current_wave >= enemy_waves.size():
-		print("no more waves")
 		waves_over = true
 		no_more_waves.emit()
 

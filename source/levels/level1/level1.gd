@@ -12,6 +12,12 @@ const INITIAL_GOLD: int = 200
 var current_wave: int
 var game_state: int = game_states.INITIAL
 var wave_manager: WaveManager = WaveManager.new()
+#var _gold: int
+#var gold: int:
+	#set(value):
+		#_gold = value
+	#get():
+		#return _gold
 
 
 @onready var enemy_path: Path2D = $EnemyPath
@@ -21,8 +27,9 @@ var wave_manager: WaveManager = WaveManager.new()
 @onready var bgm: AudioStreamPlayer = $BGM
 @onready var pause_screen: Panel = $PauseScreen
 @onready var game_over: GameOver = $GameOver
-@onready var castle: Castle = $Castle
+@onready var castle: Castle = $Buildings/Castle
 @onready var wave_indicator: Label = $WaveIndicator
+@onready var buildings: Node2D = $Buildings
 
 
 
@@ -32,11 +39,12 @@ func _ready() -> void:
 	
 	# connect signals
 	Economy.gold_changed.connect(on_gold_changed)
-	drop_control.building_placed.connect(on_building_placed)
+	drop_control.building_requested.connect(on_building_requested)
 	upgrade_window.visibility_changed.connect(on_upgrade_window_visibility_changed)
 	side_menu.pause_requested.connect(on_pause_requested)
 	side_menu.play_requested.connect(start_wave)
 	castle.castle_destroyed.connect(on_castle_destroyed)
+	wave_manager.wave_started.connect(on_wave_started)
 	wave_manager.wave_finished.connect(on_wave_finished)
 	game_over.new_game_requested.connect(on_new_game_requested)
 	game_over.end_game_requested.connect(on_quit_game_requested)
@@ -58,6 +66,7 @@ func _ready() -> void:
 
 func initialize() -> void:
 	Economy.current_gold = INITIAL_GOLD
+	#gold = INITIAL_GOLD
 	wave_manager.initialize(enemy_path)
 	side_menu.pause_button.disabled = true
 	game_state = game_states.INITIAL
@@ -88,9 +97,6 @@ func start_wave() -> void:
 
 func on_gold_changed() -> void:
 	side_menu.set_gold_label(Economy.current_gold)
-
-func on_building_placed(building: Tower) -> void:
-	building.upgrade_requested.connect(on_building_upgrade_requested)
 	
 func on_building_upgrade_requested(building: Tower) -> void:
 	upgrade_window.update(building)
@@ -122,10 +128,36 @@ func on_new_game_requested() -> void:
 	game_over.visible = false
 	get_tree().paused = false
 
-func on_wave_finished(new_wave: int) -> void:
+func on_wave_started(new_wave: int) -> void:
 	current_wave = new_wave
 	update_wave_indicator()
+	game_state = game_states.RUNNING
+
+func on_wave_finished() -> void:
 	game_state = game_states.INITIAL
 
 func update_wave_indicator() -> void:
-	wave_indicator.text = "Current wave: %s" % str(current_wave)
+	wave_indicator.text = "Current wave: %s" % str(current_wave+1)
+
+func on_building_requested(new_building, building_price, error_position):
+	if Economy.current_gold < building_price:
+		show_error_text(error_position)
+		return
+	new_building.z_index = int(new_building.global_position.y)
+	Economy.current_gold -= building_price
+	buildings.add_child(new_building)
+	new_building.upgrade_requested.connect(on_building_upgrade_requested)
+	drop_control.get_occupied_areas()
+
+func show_error_text(at_position: Vector2) -> void:
+	var error_label := Label.new()
+	error_label.text = "not enough gold"
+	error_label.modulate = Color(1, 0.2, 0.2, 1)
+	error_label.add_theme_font_size_override("font_size", 24)
+	error_label.position = at_position
+	add_child(error_label)
+
+	var tween := create_tween()
+	tween.tween_property(error_label, "position:y", error_label.position.y - 40, 1.2)
+	tween.tween_property(error_label, "modulate:a", 0, 1.2)
+	tween.finished.connect(error_label.queue_free)

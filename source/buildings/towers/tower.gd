@@ -65,7 +65,7 @@ func shoot_arrow() -> void:
 	arrow.initialize(arrow_stats, arrow_direction.normalized())
 	call_deferred("add_child", arrow)
 	arrow_on_cd = true
-	arrow_cd_timer.start() 
+	arrow_cd_timer.start()
 
 func acquire_target() -> CharacterBody2D:
 	var chosen_target: CharacterBody2D

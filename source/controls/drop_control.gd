@@ -1,7 +1,7 @@
 class_name DropControl
 extends Control
 
-signal building_placed
+signal building_requested
 
 const XY_OFFSET: Vector2 = Vector2(64,0)
 
@@ -24,16 +24,9 @@ func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 	return false
 
 func _drop_data(at_position: Vector2, data: Variant) -> void:
-	if Economy.current_gold < data["price"]:
-		show_error_text(at_position)
-		return
 	var new_tower: Tower = tower.duplicate()
 	new_tower.position = at_position + XY_OFFSET
-	new_tower.z_index = int(new_tower.global_position.y)
-	Economy.current_gold -= data["price"]
-	add_child(new_tower)
-	get_occupied_areas()
-	building_placed.emit(new_tower)
+	building_requested.emit(new_tower, data["price"], at_position)
 
 func get_occupied_areas() -> void:
 	var buildings: Array[Node] = get_tree().get_nodes_in_group("buildings")
@@ -47,16 +40,3 @@ func check_building_overlap() -> bool:
 			if building.shape.get_rect().has_point(building.to_local(point)):
 				return false
 	return true
-
-func show_error_text(at_position: Vector2) -> void:
-	var error_label := Label.new()
-	error_label.text = "not enough gold"
-	error_label.modulate = Color(1, 0.2, 0.2, 1)
-	error_label.add_theme_font_size_override("font_size", 24)
-	error_label.position = at_position
-	add_child(error_label)
-
-	var tween := create_tween()
-	tween.tween_property(error_label, "position:y", error_label.position.y - 40, 1.2)
-	tween.tween_property(error_label, "modulate:a", 0, 1.2)
-	tween.finished.connect(error_label.queue_free)

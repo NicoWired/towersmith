@@ -14,14 +14,14 @@ const RIBBON_RED_3_SLIDES = preload("res://source/themes/ribbon_red_3slides.tres
 
 
 func _ready() -> void:
-	set_victory()
+	#set_victory()
 	decline_button.pressed.connect(func(): end_game_requested.emit())
 	accept_button.pressed.connect(func(): new_game_requested.emit())
 
-func set_game_over() -> void:
-	title_label.text = "GAME OVER"
-	title_panel.add_theme_stylebox_override("panel", RIBBON_RED_3_SLIDES)
-
-func set_victory() -> void:
-	title_label.text = "VICTORY"
-	title_panel.add_theme_stylebox_override("panel", RIBBON_BLUE_3_SLIDES)
+func set_game_over(victory: bool) -> void:
+	if victory:
+		title_label.text = "VICTORY"
+		title_panel.add_theme_stylebox_override("panel", RIBBON_BLUE_3_SLIDES)
+	else:
+		title_label.text = "GAME OVER"
+		title_panel.add_theme_stylebox_override("panel", RIBBON_RED_3_SLIDES)

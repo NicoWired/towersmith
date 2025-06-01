@@ -60,5 +60,8 @@ func take_damage(damage_taken: float) -> void:
 	health -= damage_taken
 	if health <= 0:
 		Economy.current_gold += bounty
-		died.emit()
-		queue_free()
+		die()
+
+func die() -> void:
+	died.emit()
+	queue_free()

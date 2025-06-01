@@ -82,6 +82,11 @@ metadata/_edit_lock_ = true
 polygon = PackedVector2Array(68, 313, 256, 313, 256, 511, 129, 511, 130, 767, 320, 767, 319, 895, 576, 894, 577, 577, 767, 576, 768, 384, 833, 383, 835, 769, 1090, 767, 1088, 640, 1278, 639, 1279, 156, 1211, 159, 1209, 58, 1467, 60, 1467, 123, 1530, 123, 1531, 308, 1471, 307, 1470, 436, 1341, 434, 1341, 696, 1280, 695, 1277, 883, 698, 890, 694, 953, 69, 952)
 metadata/_edit_lock_ = true
 
+[node name="Buildings" type="Node2D" parent="."]
+
+[node name="Castle" parent="Buildings" instance=ExtResource("3_ho887")]
+position = Vector2(1247, 221)
+
 [node name="UpgradeWindow" parent="." instance=ExtResource("7_cn2cc")]
 visible = false
 z_index = 2500
@@ -146,8 +151,3 @@ offset_bottom = 60.0
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 64
 text = "Wave: 69"
-
-[node name="Buildings" type="Node2D" parent="."]
-
-[node name="Castle" parent="Buildings" instance=ExtResource("3_ho887")]
-position = Vector2(1247, 221)

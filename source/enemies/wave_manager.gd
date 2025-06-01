@@ -2,7 +2,6 @@ class_name WaveManager
 extends Node
 
 signal wave_started
-signal wave_finished
 signal enemy_died
 signal no_more_waves
 
@@ -42,8 +41,9 @@ func spawn_enemy(enemy_data) -> void:
 func spawn_wave() -> void:
 	if not waves_over:
 		wave_info = enemy_waves[current_wave]
+		var total_enemies: int = len(wave_info)
 		spawn_cd.start()
-		wave_started.emit(current_wave)
+		wave_started.emit(current_wave, total_enemies)
 
 func wave_tick() -> void:
 	current_second += 1
@@ -56,7 +56,6 @@ func wave_over() -> void:
 	current_wave += 1
 	current_second = 0
 	spawn_cd.stop()
-	wave_finished.emit()
 	if current_wave >= enemy_waves.size():
 		waves_over = true
 		no_more_waves.emit()

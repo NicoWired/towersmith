@@ -48,7 +48,7 @@ func on_body_entered(body):
 		var enemy: Enemy = body.get_parent()
 		var damage_taken: float = enemy.deal_damage()
 		take_damage(damage_taken)
-		enemy.queue_free()
+		enemy.die()
 
 func take_damage(damage: float) -> void:
 	health -= damage

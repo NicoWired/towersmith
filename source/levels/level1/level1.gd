@@ -10,6 +10,8 @@ enum game_states {
 const INITIAL_GOLD: int = 200
 
 var current_wave: int
+var wave_enemies_remaining: int
+var no_more_waves: bool
 var game_state: int = game_states.INITIAL
 var wave_manager: WaveManager = WaveManager.new()
 #var _gold: int
@@ -26,7 +28,7 @@ var wave_manager: WaveManager = WaveManager.new()
 @onready var side_menu: SideMenu = $SideMenu
 @onready var bgm: AudioStreamPlayer = $BGM
 @onready var pause_screen: Panel = $PauseScreen
-@onready var game_over: GameOver = $GameOver
+@onready var game_over_screen: GameOver = $GameOver
 @onready var castle: Castle = $Buildings/Castle
 @onready var wave_indicator: Label = $WaveIndicator
 @onready var buildings: Node2D = $Buildings
@@ -45,9 +47,10 @@ func _ready() -> void:
 	side_menu.play_requested.connect(start_wave)
 	castle.castle_destroyed.connect(on_castle_destroyed)
 	wave_manager.wave_started.connect(on_wave_started)
-	wave_manager.wave_finished.connect(on_wave_finished)
-	game_over.new_game_requested.connect(on_new_game_requested)
-	game_over.end_game_requested.connect(on_quit_game_requested)
+	wave_manager.enemy_died.connect(on_enemy_died)
+	wave_manager.no_more_waves.connect(on_no_more_waves)
+	game_over_screen.new_game_requested.connect(on_new_game_requested)
+	game_over_screen.end_game_requested.connect(on_quit_game_requested)
 	
 	# initialize level
 	initialize()
@@ -71,6 +74,7 @@ func initialize() -> void:
 	side_menu.pause_button.disabled = true
 	game_state = game_states.INITIAL
 	current_wave = 0
+	no_more_waves = false
 	update_wave_indicator()
 	on_gold_changed()
 
@@ -84,8 +88,8 @@ func clear_board() -> void:
 		child.queue_free()
 		
 	# remove any towers
-	for child in drop_control.get_children():
-		if child is not Area2D:
+	for child in buildings.get_children():
+		if child is not Castle:
 			child.free()
 	drop_control.get_occupied_areas()
 
@@ -112,12 +116,13 @@ func on_pause_requested(toggled: bool) -> void:
 		get_tree().paused = toggled
 
 func on_castle_destroyed() -> void:
-	side_menu.pause_button.disabled = true
-	game_state = game_states.OVER
-	get_tree().paused = true
-	game_over.set_game_over()
-	game_over.visible = true
-	wave_manager.spawn_cd.stop()
+	game_over(false)
+	#side_menu.pause_button.disabled = true
+	#game_state = game_states.OVER
+	#get_tree().paused = true
+	#game_over_screen.set_game_over(false)
+	#game_over_screen.visible = true
+	#wave_manager.spawn_cd.stop()
 
 func on_quit_game_requested() -> void:
 	get_tree().quit()
@@ -125,11 +130,12 @@ func on_quit_game_requested() -> void:
 func on_new_game_requested() -> void:
 	initialize()
 	clear_board()
-	game_over.visible = false
+	game_over_screen.visible = false
 	get_tree().paused = false
 
-func on_wave_started(new_wave: int) -> void:
+func on_wave_started(new_wave: int, total_enemies: int) -> void:
 	current_wave = new_wave
+	wave_enemies_remaining = total_enemies
 	update_wave_indicator()
 	game_state = game_states.RUNNING
 
@@ -161,3 +167,21 @@ func show_error_text(at_position: Vector2) -> void:
 	tween.tween_property(error_label, "position:y", error_label.position.y - 40, 1.2)
 	tween.tween_property(error_label, "modulate:a", 0, 1.2)
 	tween.finished.connect(error_label.queue_free)
+
+func on_enemy_died() -> void:
+	wave_enemies_remaining -= 1
+	if wave_enemies_remaining == 0:
+		game_state = game_states.INITIAL
+		if no_more_waves:
+			game_over(true)
+
+func on_no_more_waves() -> void:
+	no_more_waves = true
+
+func game_over(victory: bool) -> void:
+	side_menu.pause_button.disabled = true
+	game_state = game_states.OVER
+	get_tree().paused = true
+	game_over_screen.set_game_over(victory)
+	game_over_screen.visible = true
+	wave_manager.spawn_cd.stop()

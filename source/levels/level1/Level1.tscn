@@ -70,7 +70,7 @@ metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DropControl/DropArea"]
 position = Vector2(4, -8)
-polygon = PackedVector2Array(316, 195, 318, 574, 189, 576, 189, 703, 380, 703, 382, 839, 510, 837, 511, 511, 702, 511, 702, 319, 892, 319, 894, 704, 1023, 703, 1024, 577, 1214, 576, 1218, 59, 1030, 61, 1030, 198, 769, 196, 767, 135, 451, 133, 451, 196)
+polygon = PackedVector2Array(316, 195, 318, 574, 189, 576, 189, 711, 380, 711, 382, 839, 510, 837, 511, 521, 702, 520, 702, 329, 892, 327, 892, 711, 1021, 711, 1022, 585, 1214, 584, 1218, 59, 1030, 61, 1030, 198, 769, 196, 767, 135, 451, 133, 451, 196)
 metadata/_edit_lock_ = true
 
 [node name="DropArea2" type="Area2D" parent="DropControl"]
@@ -79,7 +79,8 @@ metadata/_custom_type_script = "uid://cnq58v2b3u4xq"
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DropControl/DropArea2"]
-polygon = PackedVector2Array(68, 313, 256, 313, 256, 504, 130, 505, 130, 759, 321, 760, 321, 886, 577, 885, 577, 568, 768, 568, 766, 376, 834, 376, 834, 759, 1090, 758, 1088, 632, 1279, 631, 1279, 156, 1211, 159, 1209, 58, 1467, 60, 1467, 123, 1530, 123, 1531, 308, 1471, 307, 1470, 436, 1341, 434, 1340, 691, 1281, 690, 1277, 883, 698, 890, 694, 953, 69, 952)
+polygon = PackedVector2Array(68, 313, 256, 313, 256, 511, 129, 511, 130, 767, 320, 767, 319, 895, 576, 894, 577, 577, 767, 576, 768, 384, 833, 383, 835, 769, 1090, 767, 1088, 640, 1278, 639, 1279, 156, 1211, 159, 1209, 58, 1467, 60, 1467, 123, 1530, 123, 1531, 308, 1471, 307, 1470, 436, 1341, 434, 1341, 696, 1280, 695, 1277, 883, 698, 890, 694, 953, 69, 952)
+metadata/_edit_lock_ = true
 
 [node name="UpgradeWindow" parent="." instance=ExtResource("7_cn2cc")]
 visible = false

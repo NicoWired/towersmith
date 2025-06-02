@@ -13,7 +13,7 @@ var bounty: int
 var animation_name: StringName
 var outline_color: Color
 
-var previous_x: float
+var previous_x: int
 var previous_y: float
 var initialized: bool = false
 @onready var enemy_animation: AnimatedSprite2D = $Body/AnimatedSprite2D
@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 	progress += speed * delta
 	
 	# flip sprite if X direction changed
-	var current_x: float = position.x
+	var current_x: int = int(position.x)
 	if current_x < previous_x:
 		enemy_animation.flip_h = true
 	elif current_x > previous_x:

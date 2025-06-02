@@ -62,7 +62,7 @@ func _ready() -> void:
 	add_child(wave_manager)
 	
 	# play music
-	#bgm.play()
+	bgm.play()
 	#side_menu.mute_button.button_pressed = true
 	
 	
@@ -117,12 +117,6 @@ func on_pause_requested(toggled: bool) -> void:
 
 func on_castle_destroyed() -> void:
 	game_over(false)
-	#side_menu.pause_button.disabled = true
-	#game_state = game_states.OVER
-	#get_tree().paused = true
-	#game_over_screen.set_game_over(false)
-	#game_over_screen.visible = true
-	#wave_manager.spawn_cd.stop()
 
 func on_quit_game_requested() -> void:
 	get_tree().quit()

@@ -4,6 +4,7 @@ extends PanelContainer
 signal play_requested
 signal pause_requested
 
+@onready var master_bus_index: int = AudioServer.get_bus_index("Master")
 @onready var gold_label: Label = %GoldLabel
 @onready var mute_button: TextureButton = %MuteButton
 @onready var pause_button: TextureButton = %PauseButton
@@ -15,8 +16,7 @@ func _ready() -> void:
 	play_button.pressed.connect(on_play_button_pressed)
 
 func on_mute_button_toggled(toggled: bool) -> void:
-	for child in get_tree().get_nodes_in_group("sound"):
-		child.stream_paused = toggled
+	AudioServer.set_bus_mute(master_bus_index, toggled)
 
 func on_pause_button_toggled(toggled: bool) -> void:
 	pause_requested.emit(toggled)

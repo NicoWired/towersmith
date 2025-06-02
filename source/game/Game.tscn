@@ -9,6 +9,7 @@ script = ExtResource("1_2mpuo")
 [node name="Level1" parent="." instance=ExtResource("3_7luj1")]
 
 [node name="FPSCounter" type="Label" parent="."]
+z_index = 4096
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0

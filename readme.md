@@ -28,21 +28,17 @@ An upcoming tower defense gaame! It will be developed live on Twich, so make sur
 - Source: https://godotshaders.com/shader/2d-outline-inline/
 - License: https://creativecommons.org/publicdomain/zero/1.0/
 
-**MedievalSharp**
+**Medieval Sharp**
 - Author: Wojciech Kalinowski
 - Source: https://fonts.google.com/specimen/MedievalSharp
 - License: https://fonts.google.com/specimen/MedievalSharp/license
+
+**Modern Antiqua**
+- Author: Wojciech Kalinowski
+- Source: https://fonts.google.com/specimen/Modern+Antiqua
+- License: https://fonts.google.com/specimen/Modern+Antiqua/license
 
 **Market Day**
 - Author: RandomMind
 - Source: https://opengameart.org/content/medieval-market-day
 - License: https://creativecommons.org/publicdomain/zero/1.0/
-
-wave generator:
-	create multiple waves of enemies programatically
-
-enemy variaty:
-	we only have 2 enemies, add more with different stats
-	
-tower upgrades:
-	all towers do the same, let them upgrade

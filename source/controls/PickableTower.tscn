@@ -7,6 +7,8 @@
 size = Vector2(128, 128)
 
 [node name="PickableTower" type="Control"]
+z_index = 1999
+z_as_relative = false
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 3
 anchors_preset = 15

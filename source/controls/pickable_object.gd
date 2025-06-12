@@ -17,15 +17,29 @@ var shape_points: Array[Vector2] = [
 	Vector2(max_coords.x/2,max_coords.y/2)
 ]
 @onready var preview_image: Sprite2D = $Sprite2D
+#
+func _ready() -> void:
+	mouse_filter = MOUSE_FILTER_STOP
+#
+#func _gui_input(event: InputEvent) -> void:
+	#if event is InputEventMouseButton:
+		#print("Mouse event - pressed:", event.pressed, "button_index:", event.button_index)
+		#if event.pressed:
+			#print("force_drag called from node:", name)
+			#force_drag({
+				#"size": Vector2(128,128),
+				#"offset": Vector2(0,64),
+				#"shape_points": shape_points,
+				#"area": $Sprite2D/Area2D.duplicate(),
+				#"price": PRICE,
+				#"preview": self.duplicate()
+			#},self.duplicate())
 
-
-func _get_drag_data(at_position: Vector2) -> Variant:
+func _get_drag_data(_at_position: Vector2) -> Variant:
 	var preview: PickableObject = self.duplicate()
-	set_deferred("preview.preview_image.modulate", Color.RED)
 	set_drag_preview(preview)
 	return(
 		{
-			"position": at_position,
 			"preview": preview,
 			"size": Vector2(128,128),
 			"offset": Vector2(0,64),
@@ -34,3 +48,9 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 			"price": PRICE
 		}
 	)
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_DRAG_BEGIN:
+		print("Drag operation started")
+	elif what == NOTIFICATION_DRAG_END:
+		print("Drag operation ended, successful:", is_drag_successful())

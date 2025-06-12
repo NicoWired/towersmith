@@ -4,21 +4,21 @@ extends Resource
 var enemy_wave_1: Dictionary[int,Variant] = {
 	1 : BlueGoblin
 	,2 : BlueGoblin
-	,3 : BlueGoblin
+	,3 : BlueTNTGoblin
 	,4 : BlueGoblin
 	,5 : YellowGoblin
 	,6 : BlueGoblin
-	,7 : BlueGoblin
+	,7 : BlueTNTGoblin
 	,8 : BlueGoblin
 	,9 : YellowGoblin
 	,10 : BlueGoblin
-	,11 : BlueGoblin
+	,11 : BlueTNTGoblin
 	,12 : YellowGoblin
 	,13 : BlueGoblin
-	,14 : BlueGoblin
+	,14 : BlueTNTGoblin
 	,15 : YellowGoblin
 	,16 : BlueGoblin
-	,17 : BlueGoblin
+	,17 : BlueTNTGoblin
 	,18 : YellowGoblin
 	,19 : YellowGoblin
 	,20 : RedGoblin

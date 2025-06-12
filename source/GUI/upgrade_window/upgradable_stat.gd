@@ -24,7 +24,7 @@ func _ready() -> void:
 	upgrade_button.pressed.connect(on_stat_upgrade)
 	upgrade_level_label.text = str(upgrade_level)
 	stat_name_label.text = name_translation[stat_name] + ": "
-	cost_label.text = str(upgrade_cost[upgrade_level])
+	cost_label.text = set_cost_label_text()
 
 func on_stat_upgrade() -> void:
 	if upgrade_level < max_level:
@@ -33,5 +33,11 @@ func on_stat_upgrade() -> void:
 			Economy.current_gold -= cost
 			upgrade_level += 1
 			upgrade_level_label.text = str(upgrade_level)
-			cost_label.text = str(upgrade_cost[upgrade_level])
+			cost_label.text = set_cost_label_text()
 			stat_changed.emit(self)
+
+func set_cost_label_text() -> String:
+	if upgrade_level == max_level:
+		return("MAX")
+	else:
+		return(str(upgrade_cost[upgrade_level]))

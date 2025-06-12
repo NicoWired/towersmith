@@ -4,13 +4,11 @@ extends Resource
 var damage: Dictionary[StringName,Variant] = {
 	"base_value": 10.0
 	, "upgrade_level": 0
-	, "max_level": 5
 	, "upgrade_cost": [15,30,50,80,140,210]
 }
 var speed: Dictionary[StringName,Variant] = {
 	"base_value": 1300.0
 	, "upgrade_level": 0
-	, "max_level": 5
 	, "upgrade_cost": [10,15,25,40,60,85]
 }
 

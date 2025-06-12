@@ -26,7 +26,7 @@ func crate_upgradable_stats(stats_to_update: Dictionary, prefix:String = "") -> 
 			var new_stat: UpgradableStat = base_upgradable_stat.duplicate()
 			new_stat.stat_name = prefix+stat_name
 			new_stat.upgrade_level = int(stat[&"upgrade_level"])
-			new_stat.max_level = stat[&"max_level"]
+			new_stat.max_level = stat[&"upgrade_cost"].size()
 			new_stat.upgrade_cost = stat[&"upgrade_cost"]
 			new_stat.stat_changed.connect(on_stat_changed)
 			upgrades_container.add_child(new_stat)

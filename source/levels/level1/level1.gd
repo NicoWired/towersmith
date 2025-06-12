@@ -7,19 +7,13 @@ enum game_states {
 	OVER
 }
 
-const INITIAL_GOLD: int = 200
+const INITIAL_GOLD: int = 2000
 
 var current_wave: int
 var wave_enemies_remaining: int
 var no_more_waves: bool
 var game_state: int = game_states.INITIAL
 var wave_manager: WaveManager = WaveManager.new()
-#var _gold: int
-#var gold: int:
-	#set(value):
-		#_gold = value
-	#get():
-		#return _gold
 
 
 @onready var enemy_path: Path2D = $EnemyPath
@@ -63,13 +57,12 @@ func _ready() -> void:
 	
 	# play music
 	bgm.play()
-	#side_menu.mute_button.button_pressed = true
+	side_menu.mute_button.button_pressed = true
 	
 	
 
 func initialize() -> void:
 	Economy.current_gold = INITIAL_GOLD
-	#gold = INITIAL_GOLD
 	wave_manager.initialize(enemy_path)
 	side_menu.pause_button.disabled = true
 	game_state = game_states.INITIAL
@@ -137,7 +130,7 @@ func on_wave_finished() -> void:
 	game_state = game_states.INITIAL
 
 func update_wave_indicator() -> void:
-	wave_indicator.text = "Current wave: %s" % str(current_wave+1)
+	wave_indicator.text = "Current wave: %s-%s" % [str(current_wave+1), wave_manager.enemy_waves.size()]
 
 func on_building_requested(new_building, building_price, error_position):
 	if Economy.current_gold < building_price:

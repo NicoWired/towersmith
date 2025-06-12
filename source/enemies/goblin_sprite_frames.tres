@@ -1,8 +1,9 @@
-[gd_resource type="SpriteFrames" load_steps=43 format=3 uid="uid://uedtf5upfdta"]
+[gd_resource type="SpriteFrames" load_steps=50 format=3 uid="uid://uedtf5upfdta"]
 
 [ext_resource type="Texture2D" uid="uid://cigpd08m5lwog" path="res://assets/tiny_swords/Factions/Goblins/Troops/Torch/Yellow/Torch_Yellow.png" id="1_bcg3q"]
 [ext_resource type="Texture2D" uid="uid://cuny3wq5o3wlp" path="res://assets/tiny_swords/Factions/Goblins/Troops/Torch/Blue/Torch_Blue.png" id="1_x2yi1"]
 [ext_resource type="Texture2D" uid="uid://u3ofkhrhg8e2" path="res://assets/tiny_swords/Factions/Goblins/Troops/Torch/Orange/Torch_Orange.png" id="2_e35ma"]
+[ext_resource type="Texture2D" uid="uid://dxwjegbsnwr34" path="res://assets/tiny_swords/Factions/Goblins/Troops/TNT/Blue/TNT_Blue.png" id="2_gf5um"]
 [ext_resource type="Texture2D" uid="uid://3kwm2ka53qyp" path="res://assets/tiny_swords/Factions/Goblins/Troops/Torch/Brown/Torch_Brown.png" id="2_kkiao"]
 [ext_resource type="Texture2D" uid="uid://dipqnq0th3n58" path="res://assets/tiny_swords/Factions/Goblins/Troops/Torch/Purple/Torch_Purple.png" id="2_qkygx"]
 [ext_resource type="Texture2D" uid="uid://e3wyh3ft03fh" path="res://assets/tiny_swords/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="2_u6kqg"]
@@ -29,6 +30,30 @@ region = Rect2(768, 192, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6j7l4"]
 atlas = ExtResource("1_x2yi1")
+region = Rect2(960, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ohq0"]
+atlas = ExtResource("2_gf5um")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i85vn"]
+atlas = ExtResource("2_gf5um")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ml45k"]
+atlas = ExtResource("2_gf5um")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_naitj"]
+atlas = ExtResource("2_gf5um")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fgob"]
+atlas = ExtResource("2_gf5um")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_po7nk"]
+atlas = ExtResource("2_gf5um")
 region = Rect2(960, 192, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6gq4k"]
@@ -174,6 +199,29 @@ animations = [{
 }],
 "loop": true,
 "name": &"walking_blue",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ohq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i85vn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ml45k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_naitj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fgob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_po7nk")
+}],
+"loop": true,
+"name": &"walking_blue_tnt",
 "speed": 10.0
 }, {
 "frames": [{

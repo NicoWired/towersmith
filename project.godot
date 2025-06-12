@@ -20,13 +20,13 @@ config/icon="res://icon.svg"
 
 GlobalEvents="*res://source/autoloaders/global_events.gd"
 Economy="*res://source/autoloaders/economy.gd"
+LoadAssets="*res://source/autoloaders/load_assets.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
-mouse_cursor/custom_image="uid://b76t4feljxtu1"
 
 [file_customization]
 

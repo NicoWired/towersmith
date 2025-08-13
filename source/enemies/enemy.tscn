@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bu0fgh3xbdbk"]
+
+[ext_resource type="Script" uid="uid://b80iri7oujh6i" path="res://source/enemies/enemy.gd" id="1_0ehif"]
+[ext_resource type="SpriteFrames" uid="uid://uedtf5upfdta" path="res://source/enemies/goblin_sprite_frames.tres" id="2_a281l"]
+[ext_resource type="Shader" uid="uid://cqp60r1dbqwv6" path="res://source/shaders/outline_shader.gdshader" id="2_q4rrw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a281l"]
+shader = ExtResource("2_q4rrw")
+shader_parameter/color = Color(1, 0.227451, 1, 1)
+shader_parameter/width = 3.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qy03c"]
+size = Vector2(48, 60)
+
+[node name="Enemy" type="PathFollow2D"]
+rotates = false
+loop = false
+script = ExtResource("1_0ehif")
+
+[node name="Body" type="CharacterBody2D" parent="."]
+collision_layer = 4
+collision_mask = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Body"]
+material = SubResource("ShaderMaterial_a281l")
+sprite_frames = ExtResource("2_a281l")
+animation = &"walking_blue"
+autoplay = "walking_yellow"
+frame_progress = 0.94797
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_qy03c")

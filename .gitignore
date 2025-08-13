@@ -1,0 +1,12 @@
+.godot/*
+*.bin
+*.cfg
+*.ctex
+*.md5
+*.fontdata
+*.cache
+*.mp3str
+*.import
+*.zip
+*.DS_Store
+*.uid

@@ -1,0 +1,16 @@
+[gd_resource type="StyleBoxTexture" load_steps=3 format=3 uid="uid://wmy5o54pt4me"]
+
+[ext_resource type="Texture2D" uid="uid://d1mlq77s7royq" path="res://assets/tiny_swords/UI/Banners/Carved_3Slides.png" id="1_7rmy5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87moa"]
+atlas = ExtResource("1_7rmy5")
+region = Rect2(3, 1, 185, 62)
+
+[resource]
+texture = SubResource("AtlasTexture_87moa")
+texture_margin_left = 17.3023
+texture_margin_top = 4.03603
+texture_margin_right = 20.9188
+texture_margin_bottom = 12.0883
+axis_stretch_horizontal = 1
+region_rect = Rect2(0, 6.85167, 192, 57.1483)

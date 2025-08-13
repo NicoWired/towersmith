@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://jivtsbkhwat3"]
+
+[ext_resource type="Texture2D" uid="uid://hvurttbah2rr" path="res://assets/tiny_swords/Effects/Fire/Fire.png" id="1_toidi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tixjp"]
+atlas = ExtResource("1_toidi")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwpjh"]
+atlas = ExtResource("1_toidi")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qf2p0"]
+atlas = ExtResource("1_toidi")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6joxk"]
+atlas = ExtResource("1_toidi")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvd7r"]
+atlas = ExtResource("1_toidi")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ww6sc"]
+atlas = ExtResource("1_toidi")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlr0w"]
+atlas = ExtResource("1_toidi")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xg2a6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tixjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwpjh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qf2p0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6joxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvd7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ww6sc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlr0w")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 10.0
+}]
+
+[node name="Fire" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_xg2a6")
+animation = &"fire"
+frame_progress = 0.660972

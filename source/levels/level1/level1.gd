@@ -215,6 +215,7 @@ func create_drop_areas(grass_coords: Array[Vector2i]) -> void:
 		occupied[coord] = true
 	
 	# dict to keep the state of the BFS
+	var directions = [Vector2i(0, 1), Vector2i(0, -1), Vector2i(1, 0), Vector2i(-1, 0)]
 	var visited: Dictionary = {}
 	for cell in occupied:
 		if visited.has(cell):
@@ -227,8 +228,6 @@ func create_drop_areas(grass_coords: Array[Vector2i]) -> void:
 
 		while not queue.is_empty():
 			var current_cell: Vector2i = queue.pop_front()
-			var directions = [Vector2i(0, 1), Vector2i(0, -1), Vector2i(1, 0), Vector2i(-1, 0)]
-
 			for dir in directions:
 				var adjacent_cell: Vector2i = current_cell + dir
 				if occupied.has(adjacent_cell) and not visited.has(adjacent_cell):

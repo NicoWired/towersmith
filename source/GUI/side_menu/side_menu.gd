@@ -39,5 +39,5 @@ func set_gold_label(gold: int) -> void:
 		@warning_ignore("integer_division")
 		gold_text = str(gold/1000000000)+"MM"
 	else:
-		gold_text = "TOO MUCH"
+		gold_text = tr("TOO_MUCH_MONEY")
 	gold_label.text = gold_text

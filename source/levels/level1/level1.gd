@@ -140,7 +140,7 @@ func on_wave_finished() -> void:
 	game_state = game_states.INITIAL
 
 func update_wave_indicator() -> void:
-	wave_indicator.text = "Current wave: %s-%s" % [str(current_wave+1), wave_manager.enemy_waves.size()]
+	wave_indicator.text = tr("CURRENT_WAVE") + ": %s-%s" % [str(current_wave+1), wave_manager.enemy_waves.size()]
 
 func on_building_requested(new_building, building_price, error_position):
 	if Economy.current_gold < building_price:

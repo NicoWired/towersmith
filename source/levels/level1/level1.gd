@@ -8,6 +8,7 @@ enum game_states {
 }
 
 const INITIAL_GOLD: int = 2000
+const TILE_SIZE: int = 64
 
 var current_wave: int
 var wave_enemies_remaining: int
@@ -17,20 +18,29 @@ var wave_manager: WaveManager = WaveManager.new()
 
 
 @onready var enemy_path: Path2D = $EnemyPath
-@onready var upgrade_window: Control = $GUI/UpgradeWindow
 @onready var drop_control: DropControl = $DropControl
-@onready var side_menu: SideMenu = $GUI/SideMenu
 @onready var bgm: AudioStreamPlayer = $BGM
-@onready var pause_screen: Panel = $GUI/PauseScreen
-@onready var game_over_screen: GameOver = $GUI/GameOver
 @onready var castle: Castle = $Buildings/Castle
-@onready var wave_indicator: Label = $GUI/WaveIndicator
 @onready var buildings: Node2D = $Buildings
+@onready var drop_area_script: Script = load("res://source/controls/drop_area.gd")
 
+# GUI elements
+@onready var wave_indicator: Label = $GUI/WaveIndicator
+@onready var game_over_screen: GameOver = $GUI/GameOver
+@onready var pause_screen: Panel = $GUI/PauseScreen
+@onready var side_menu: SideMenu = $GUI/SideMenu
+@onready var upgrade_window: Control = $GUI/UpgradeWindow
+
+# Terrain layers
+@onready var grass_layer: TileMapLayer = $Layers/Grass
+@onready var sand_layer: TileMapLayer = $Layers/Sand
+@onready var road_layer: TileMapLayer = $Layers/Road
+@onready var bridge_layer: TileMapLayer = $Layers/Bridge
 
 
 func _ready() -> void:
-	# update location of starting buildings
+	# update location of starting buildings and grass cells
+	create_drop_areas(find_grass_tiles())
 	drop_control.get_occupied_areas()
 	
 	# connect signals
@@ -172,3 +182,68 @@ func game_over(victory: bool) -> void:
 	game_over_screen.set_game_over(victory)
 	game_over_screen.visible = true
 	wave_manager.spawn_cd.stop()
+
+func find_grass_tiles() -> Array[Vector2i]:
+	var grass_coords: Array[Vector2i] = grass_layer.get_used_cells()
+	var sand_coords: Array[Vector2i] = sand_layer.get_used_cells()
+	var road_coords: Array[Vector2i] = road_layer.get_used_cells()
+	var bridge_coords: Array[Vector2i] = bridge_layer.get_used_cells()
+	
+	var upper_layers: Array[Array] = [sand_coords, road_coords, bridge_coords]
+	for layer in upper_layers:
+		for coord: Vector2i in layer:
+			grass_coords.erase(coord)
+	
+	return grass_coords
+	
+func create_tile_polygon(coord: Vector2i) -> PackedVector2Array:
+	var tile_poly: PackedVector2Array
+	tile_poly.append(Vector2(coord.x * TILE_SIZE, coord.y * TILE_SIZE))
+	tile_poly.append(Vector2(coord.x * TILE_SIZE + TILE_SIZE, coord.y * TILE_SIZE))
+	tile_poly.append(Vector2(coord.x * TILE_SIZE + TILE_SIZE, coord.y * TILE_SIZE + TILE_SIZE))
+	tile_poly.append(Vector2(coord.x * TILE_SIZE, coord.y * TILE_SIZE + TILE_SIZE))
+	return tile_poly
+
+func create_drop_areas(grass_coords: Array[Vector2i]) -> void:
+	# quit the function if grass_coords is empty
+	if grass_coords.size() == 0:
+		return
+	
+	# dict to hold the state of every grass cell
+	var occupied: Dictionary = {}
+	for coord in grass_coords:
+		occupied[coord] = true
+	
+	# dict to keep the state of the BFS
+	var directions = [Vector2i(0, 1), Vector2i(0, -1), Vector2i(1, 0), Vector2i(-1, 0)]
+	var visited: Dictionary = {}
+	for cell in occupied:
+		if visited.has(cell):
+			continue
+		
+		# Start BFS for this component and build merged polygon incrementally
+		var current_poly: PackedVector2Array = create_tile_polygon(cell)
+		visited[cell] = true
+		var queue: Array[Vector2i] = [cell]
+
+		while not queue.is_empty():
+			var current_cell: Vector2i = queue.pop_front()
+			for dir in directions:
+				var adjacent_cell: Vector2i = current_cell + dir
+				if occupied.has(adjacent_cell) and not visited.has(adjacent_cell):
+					visited[adjacent_cell] = true
+					queue.append(adjacent_cell)
+					
+					# Merge the adjacent cell to the polygon
+					var adjacent_poly: PackedVector2Array = create_tile_polygon(adjacent_cell)
+					current_poly = Geometry2D.merge_polygons(current_poly, adjacent_poly)[0]
+		
+		# Create drop area
+		var area := Area2D.new()
+		var collision_poly := CollisionPolygon2D.new()
+		collision_poly.polygon = current_poly
+		collision_poly.name = "CollisionPolygon2D"
+		area.name = "DropArea"
+		area.add_child(collision_poly)
+		area.set_script(drop_area_script)
+		drop_control.add_child(area)

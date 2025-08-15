@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=4 uid="uid://dn8d5l7xn6mhg"]
+[gd_scene load_steps=11 format=4 uid="uid://dn8d5l7xn6mhg"]
 
 [ext_resource type="Script" uid="uid://d3tnfmqrs6bls" path="res://source/levels/level1/level1.gd" id="1_27su2"]
 [ext_resource type="TileSet" uid="uid://dbuoem2h83kg4" path="res://source/levels/levels_tile_set.tres" id="2_p21y6"]
 [ext_resource type="PackedScene" uid="uid://ce03tgyb1xpta" path="res://source/buildings/castle/Castle.tscn" id="3_ho887"]
 [ext_resource type="Script" uid="uid://uctgg1bdix62" path="res://source/controls/drop_control.gd" id="4_b6prr"]
-[ext_resource type="Script" uid="uid://dbrdfj5xhpync" path="res://source/controls/drop_area.gd" id="5_ocgwi"]
 [ext_resource type="PackedScene" uid="uid://3vrv2phvtk8g" path="res://source/GUI/side_menu/SideMenu.tscn" id="6_3eaae"]
 [ext_resource type="StyleBox" uid="uid://b1q0w0d2ul4lb" path="res://source/themes/normal_paper_background_pannel.tres" id="7_0vf1f"]
 [ext_resource type="PackedScene" uid="uid://cqom6kxl3fsjd" path="res://source/GUI/upgrade_window/upgrade_window.tscn" id="7_cn2cc"]
@@ -62,23 +61,6 @@ offset_bottom = 1074.0
 script = ExtResource("4_b6prr")
 metadata/_edit_lock_ = true
 
-[node name="DropArea" type="Area2D" parent="DropControl"]
-script = ExtResource("5_ocgwi")
-metadata/_edit_lock_ = true
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DropControl/DropArea"]
-position = Vector2(4, -8)
-polygon = PackedVector2Array(316, 195, 318, 574, 189, 576, 189, 711, 380, 711, 382, 839, 510, 837, 511, 521, 702, 520, 702, 329, 892, 327, 892, 711, 1021, 711, 1022, 585, 1214, 584, 1218, 59, 1030, 61, 1030, 198, 769, 196, 767, 135, 451, 133, 451, 196)
-metadata/_edit_lock_ = true
-
-[node name="DropArea2" type="Area2D" parent="DropControl"]
-script = ExtResource("5_ocgwi")
-metadata/_edit_lock_ = true
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DropControl/DropArea2"]
-polygon = PackedVector2Array(68, 313, 256, 313, 256, 511, 129, 511, 130, 767, 320, 767, 319, 895, 576, 894, 577, 577, 767, 576, 768, 384, 833, 383, 835, 769, 1090, 767, 1088, 640, 1278, 639, 1279, 156, 1211, 159, 1209, 58, 1467, 60, 1467, 123, 1530, 123, 1531, 308, 1471, 307, 1470, 436, 1341, 434, 1341, 696, 1280, 695, 1277, 883, 698, 890, 694, 953, 69, 952)
-metadata/_edit_lock_ = true
-
 [node name="Buildings" type="Node2D" parent="."]
 
 [node name="Castle" parent="Buildings" instance=ExtResource("3_ho887")]
@@ -102,6 +84,7 @@ z_index = 2500
 [node name="PauseScreen" type="Panel" parent="GUI"]
 visible = false
 z_index = 2000
+layout_mode = 0
 offset_left = -6.0
 offset_top = -8.0
 offset_right = 1936.0
@@ -126,6 +109,7 @@ text = "Game Paused"
 
 [node name="SideMenu" parent="GUI" instance=ExtResource("6_3eaae")]
 z_index = 2000
+layout_mode = 0
 offset_left = 1537.0
 offset_top = 34.0
 offset_right = 1887.63
@@ -148,6 +132,7 @@ offset_bottom = 390.0
 size_flags_vertical = 4
 
 [node name="WaveIndicator" type="Label" parent="GUI"]
+layout_mode = 0
 offset_left = 61.0
 offset_top = 41.0
 offset_right = 337.0

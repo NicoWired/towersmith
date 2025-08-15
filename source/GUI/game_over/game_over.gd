@@ -23,7 +23,7 @@ func _ready() -> void:
 func set_game_over(victory: bool) -> void:
 	if victory:
 		title_label.text = tr("VICTORY_TOAST")
-		title_panel.add_theme_stylebtr.ox_override("panel", RIBBON_BLUE_3_SLIDES)
+		title_panel.add_theme_stylebox_override("panel", RIBBON_BLUE_3_SLIDES)
 	else:
 		title_label.text = "GAME OVER"
 		title_panel.add_theme_stylebox_override("panel", RIBBON_RED_3_SLIDES)

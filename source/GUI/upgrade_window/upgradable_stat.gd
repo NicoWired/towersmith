@@ -8,9 +8,9 @@ var upgrade_level: int = 0
 var max_level: int = 5
 var upgrade_cost: Array = [1,2,3,4,5]
 var name_translation: Dictionary[StringName,String] = {
-	"tower_range": "Range"
-	,"arrow_stats.damage": "Damage"
-	,"arrow_stats.speed": "Arrow Speed"
+	"tower_range": tr("TOWER_RANGE_STAT")
+	,"arrow_stats.damage": tr("ARROW_DAMAGE_STAT")
+	,"arrow_stats.speed": tr("ARROW_DAMAGE_SPEED")
 	,"test": "Test"
 }
 

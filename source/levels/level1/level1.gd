@@ -17,14 +17,14 @@ var wave_manager: WaveManager = WaveManager.new()
 
 
 @onready var enemy_path: Path2D = $EnemyPath
-@onready var upgrade_window: Control = $UpgradeWindow
+@onready var upgrade_window: Control = $GUI/UpgradeWindow
 @onready var drop_control: DropControl = $DropControl
-@onready var side_menu: SideMenu = $SideMenu
+@onready var side_menu: SideMenu = $GUI/SideMenu
 @onready var bgm: AudioStreamPlayer = $BGM
-@onready var pause_screen: Panel = $PauseScreen
-@onready var game_over_screen: GameOver = $GameOver
+@onready var pause_screen: Panel = $GUI/PauseScreen
+@onready var game_over_screen: GameOver = $GUI/GameOver
 @onready var castle: Castle = $Buildings/Castle
-@onready var wave_indicator: Label = $WaveIndicator
+@onready var wave_indicator: Label = $GUI/WaveIndicator
 @onready var buildings: Node2D = $Buildings
 
 

@@ -1,4 +1,4 @@
-class_name level1
+class_name Level1
 extends Node2D
 
 enum game_states {
@@ -10,9 +10,9 @@ enum game_states {
 const INITIAL_GOLD: int = 2000
 const TILE_SIZE: int = 64
 
-var current_wave: int
-var wave_enemies_remaining: int
-var no_more_waves: bool
+var current_wave: int = 0
+var wave_enemies_remaining: int = 0
+var no_more_waves: bool = false
 var game_state: int = game_states.INITIAL
 var wave_manager: WaveManager = WaveManager.new()
 
@@ -93,7 +93,7 @@ func clear_board() -> void:
 	# remove any towers
 	for child in buildings.get_children():
 		if child is not Castle:
-			child.free()
+			child.queue_free()
 	drop_control.get_occupied_areas()
 
 func start_wave() -> void:
@@ -154,7 +154,7 @@ func on_building_requested(new_building, building_price, error_position):
 
 func show_error_text(at_position: Vector2) -> void:
 	var error_label := Label.new()
-	error_label.text = "not enough gold"
+	error_label.text = tr("NOT_ENOUGH_GOLD")
 	error_label.modulate = Color(1, 0.2, 0.2, 1)
 	error_label.add_theme_font_size_override("font_size", 24)
 	error_label.position = at_position
@@ -166,7 +166,8 @@ func show_error_text(at_position: Vector2) -> void:
 	tween.finished.connect(error_label.queue_free)
 
 func on_enemy_died() -> void:
-	wave_enemies_remaining -= 1
+	if wave_enemies_remaining > 0:
+		wave_enemies_remaining -= 1
 	if wave_enemies_remaining == 0:
 		game_state = game_states.INITIAL
 		if no_more_waves:
@@ -197,7 +198,7 @@ func find_grass_tiles() -> Array[Vector2i]:
 	return grass_coords
 	
 func create_tile_polygon(coord: Vector2i) -> PackedVector2Array:
-	var tile_poly: PackedVector2Array
+	var tile_poly: PackedVector2Array = PackedVector2Array()
 	tile_poly.append(Vector2(coord.x * TILE_SIZE, coord.y * TILE_SIZE))
 	tile_poly.append(Vector2(coord.x * TILE_SIZE + TILE_SIZE, coord.y * TILE_SIZE))
 	tile_poly.append(Vector2(coord.x * TILE_SIZE + TILE_SIZE, coord.y * TILE_SIZE + TILE_SIZE))

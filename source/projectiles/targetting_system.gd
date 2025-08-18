@@ -34,6 +34,8 @@ func lock_target(method: int = targetting_methods.RANDOM) -> Vector2:
 		_: return Vector2.ZERO
 	
 func random_acquisition() -> Vector2:
+	if target_list.is_empty():
+		return Vector2.ZERO
 	var chosen_enemy: CharacterBody2D = target_list.pick_random()
 	return chosen_enemy.global_position
 	

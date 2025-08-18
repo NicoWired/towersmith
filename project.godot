@@ -51,8 +51,6 @@ theme/custom="uid://cnh4lw4smnxj"
 
 locale/translations=PackedStringArray("res://localization.en.translation", "res://localization.es.translation")
 locale/include_text_server_data=true
-locale/test="es"
-locale/fallback="es"
 
 [layer_names]
 

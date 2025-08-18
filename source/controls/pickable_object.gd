@@ -49,8 +49,8 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 		}
 	)
 
-func _notification(what: int) -> void:
-	if what == NOTIFICATION_DRAG_BEGIN:
-		print("Drag operation started")
-	elif what == NOTIFICATION_DRAG_END:
-		print("Drag operation ended, successful:", is_drag_successful())
+#func _notification(what: int) -> void:
+	#if what == NOTIFICATION_DRAG_BEGIN:
+		#print("Drag operation started")
+	#elif what == NOTIFICATION_DRAG_END:
+		#print("Drag operation ended, successful:", is_drag_successful())

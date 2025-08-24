@@ -5,7 +5,6 @@ signal building_requested
 
 const XY_OFFSET: Vector2 = Vector2(64,0)
 
-var tower: Tower = preload("res://source/buildings/towers/Tower.tscn").instantiate()
 var points_to_check: Array
 var occupied_areas: Array[CollisionShape2D]
 
@@ -24,15 +23,15 @@ func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 	return false
 
 func _drop_data(at_position: Vector2, data: Variant) -> void:
-	var new_tower: Tower = tower.duplicate()
-	new_tower.position = at_position + XY_OFFSET
-	building_requested.emit(new_tower, data["price"], at_position)
+	var new_building: Building = data["building"].instantiate()
+	new_building.position = at_position + XY_OFFSET
+	building_requested.emit(new_building, data["price"], at_position)
 
 func get_occupied_areas() -> void:
 	var buildings: Array[Node] = get_tree().get_nodes_in_group("buildings")
 	occupied_areas = []
 	for building: Node in buildings:
-		occupied_areas.append(building.hitbox_shape)
+		occupied_areas.append(building.collision_shape_2d)
 
 func check_building_overlap() -> bool:
 	for building: CollisionShape2D in occupied_areas:

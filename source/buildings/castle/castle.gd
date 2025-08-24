@@ -1,5 +1,5 @@
 class_name Castle
-extends Node2D
+extends Building
 
 signal castle_destroyed
 
@@ -13,35 +13,37 @@ var health: float:
 		fire_2.visible = (health/INITIAL_HEALTH <= 0.5)
 		fire_3.visible = (health/INITIAL_HEALTH <= 0.25)
 		if health <= 0:
-			show_sprite(false)
+			show_destroyed_sprite()
 			castle_destroyed.emit()
 	get():
 		return _health
-
-@onready var hitbox: Area2D = $Hitbox
-@onready var hitbox_shape: CollisionShape2D = $Hitbox/HitboxShape
-@onready var castle_sprite: Sprite2D = $CastleSprite
-@onready var castle_destroyed_sprite: Sprite2D = $CastleDestroyed
-@onready var fire: AnimatedSprite2D = $CastleSprite/Fire
-@onready var fire_2: AnimatedSprite2D = $CastleSprite/Fire2
-@onready var fire_3: AnimatedSprite2D = $CastleSprite/Fire3
-
-
+		
+@onready var hitbox_area: Area2D = $HitboxArea
+@onready var destroyed_sprite: Sprite2D = $DestroyedSprite
+@onready var fire: AnimatedSprite2D = $FireAnimations/Fire
+@onready var fire_2: AnimatedSprite2D = $FireAnimations/Fire2
+@onready var fire_3: AnimatedSprite2D = $FireAnimations/Fire3
+@onready var fire_animations: Node2D = $FireAnimations
 
 func _ready() -> void:
-	hitbox.body_entered.connect(on_body_entered)
-	show_sprite()
-	for child in castle_sprite.get_children():
+	super._ready()
+	area_2d.collision_layer = 17
+	area_2d.collision_mask = 20
+	
+	hitbox_area.body_entered.connect(on_body_entered)
+	show_destroyed_sprite(false)
+	for child in fire_animations.get_children():
 		if child is AnimatedSprite2D:
 			child.play("fire")
+	fire_animations.move_to_front()
 	reset_health()
 
 func reset_health() -> void:
 	health = INITIAL_HEALTH
 
-func show_sprite(healthy: bool = true) -> void:
-	castle_sprite.visible = healthy
-	castle_destroyed_sprite.visible = not healthy
+func show_destroyed_sprite(destroyed: bool = true) -> void:
+	main_sprite.visible = not destroyed
+	destroyed_sprite.visible = destroyed
 
 func on_body_entered(body):
 	if body.get_parent() is Enemy:

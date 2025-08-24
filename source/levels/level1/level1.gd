@@ -29,7 +29,7 @@ var wave_manager: WaveManager = WaveManager.new()
 @onready var game_over_screen: GameOver = $GUI/GameOver
 @onready var pause_screen: Panel = $GUI/PauseScreen
 @onready var side_menu: SideMenu = $GUI/SideMenu
-@onready var upgrade_window: Control = $GUI/UpgradeWindow
+@onready var upgrade_window: UpgradeWindow = $GUI/UpgradeWindow
 
 # Terrain layers
 @onready var grass_layer: TileMapLayer = $Layers/Grass
@@ -69,7 +69,6 @@ func _ready() -> void:
 	bgm.play()
 	side_menu.mute_button.button_pressed = true
 	
-	
 
 func initialize() -> void:
 	Economy.current_gold = INITIAL_GOLD
@@ -84,7 +83,7 @@ func initialize() -> void:
 func clear_board() -> void:
 	# reset castle
 	castle.reset_health()
-	castle.show_sprite()
+	castle.show_destroyed_sprite(false)
 	
 	# eliminate remaining enemies
 	for child in enemy_path.get_children():

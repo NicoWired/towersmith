@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bx2hmi8jke7eb"]
+[gd_scene load_steps=5 format=3 uid="uid://bx2hmi8jke7eb"]
 
 [ext_resource type="Script" uid="uid://dumbrlshmtk5d" path="res://source/controls/pickable_object.gd" id="1_jfe0j"]
 [ext_resource type="Texture2D" uid="uid://dfi0lgur668l5" path="res://assets/tiny_swords/Factions/Knights/Buildings/Tower/Tower_Blue.png" id="2_mwxjt"]
+[ext_resource type="PackedScene" uid="uid://kx8itcixaxp0" path="res://source/buildings/towers/tower.tscn" id="3_mwxjt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jfe0j"]
 size = Vector2(128, 128)
@@ -19,6 +20,8 @@ offset_bottom = -722.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jfe0j")
+building = ExtResource("3_mwxjt")
+price = 60
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1

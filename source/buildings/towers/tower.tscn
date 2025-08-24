@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://kx8itcixaxp0"]
+
+[ext_resource type="Script" uid="uid://crddcypmj4ygu" path="res://source/buildings/towers/tower.gd" id="1_jpnmc"]
+[ext_resource type="Texture2D" uid="uid://dfi0lgur668l5" path="res://assets/tiny_swords/Factions/Knights/Buildings/Tower/Tower_Blue.png" id="2_8olxa"]
+[ext_resource type="PackedScene" uid="uid://bkpc2ohp4v5yw" path="res://source/projectiles/targetting_system.tscn" id="3_e0ps2"]
+[ext_resource type="PackedScene" uid="uid://c2novouetbqvt" path="res://source/projectiles/shooting_system.tscn" id="4_nhqqt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gupkk"]
+size = Vector2(128, 128)
+
+[node name="Tower" type="Node2D"]
+script = ExtResource("1_jpnmc")
+main_texture = ExtResource("2_8olxa")
+hitbox_shape = SubResource("RectangleShape2D_gupkk")
+metadata/_custom_type_script = "uid://bfdtrtvcophpf"
+
+[node name="TargettingSystem" parent="." instance=ExtResource("3_e0ps2")]
+
+[node name="ShootingSystem" parent="." instance=ExtResource("4_nhqqt")]

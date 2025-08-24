@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://d3tnfmqrs6bls" path="res://source/levels/level1/level1.gd" id="1_27su2"]
 [ext_resource type="TileSet" uid="uid://dbuoem2h83kg4" path="res://source/levels/levels_tile_set.tres" id="2_p21y6"]
-[ext_resource type="PackedScene" uid="uid://ce03tgyb1xpta" path="res://source/buildings/castle/Castle.tscn" id="3_ho887"]
 [ext_resource type="Script" uid="uid://uctgg1bdix62" path="res://source/controls/drop_control.gd" id="4_b6prr"]
+[ext_resource type="PackedScene" uid="uid://bpypkidrbqm2b" path="res://source/buildings/castle/castle.tscn" id="4_kf0gc"]
 [ext_resource type="PackedScene" uid="uid://3vrv2phvtk8g" path="res://source/GUI/side_menu/SideMenu.tscn" id="6_3eaae"]
 [ext_resource type="StyleBox" uid="uid://b1q0w0d2ul4lb" path="res://source/themes/normal_paper_background_pannel.tres" id="7_0vf1f"]
 [ext_resource type="PackedScene" uid="uid://cqom6kxl3fsjd" path="res://source/GUI/upgrade_window/upgrade_window.tscn" id="7_cn2cc"]
@@ -63,8 +63,8 @@ metadata/_edit_lock_ = true
 
 [node name="Buildings" type="Node2D" parent="."]
 
-[node name="Castle" parent="Buildings" instance=ExtResource("3_ho887")]
-position = Vector2(1247, 221)
+[node name="Castle" parent="Buildings" instance=ExtResource("4_kf0gc")]
+position = Vector2(1247, 225)
 
 [node name="BGM" type="AudioStreamPlayer" parent="." groups=["sound"]]
 stream = ExtResource("9_kf0gc")

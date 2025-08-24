@@ -1,4 +1,3 @@
-@tool
 class_name Castle
 extends Building
 
@@ -27,11 +26,16 @@ var health: float:
 @onready var fire_animations: Node2D = $FireAnimations
 
 func _ready() -> void:
+	super._ready()
+	area_2d.collision_layer = 17
+	area_2d.collision_mask = 20
+	
 	hitbox_area.body_entered.connect(on_body_entered)
 	show_destroyed_sprite(false)
 	for child in fire_animations.get_children():
 		if child is AnimatedSprite2D:
 			child.play("fire")
+	fire_animations.move_to_front()
 	reset_health()
 
 func reset_health() -> void:
@@ -42,9 +46,7 @@ func show_destroyed_sprite(destroyed: bool = true) -> void:
 	destroyed_sprite.visible = destroyed
 
 func on_body_entered(body):
-	print("asdad")
 	if body.get_parent() is Enemy:
-		print("ifugjhnof")
 		var enemy: Enemy = body.get_parent()
 		var damage_taken: float = enemy.deal_damage()
 		take_damage(damage_taken)

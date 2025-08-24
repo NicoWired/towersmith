@@ -1,26 +1,33 @@
 class_name PickableObject
 extends Control
 
-const SPRITE_DIMENSIONS: int = 128
-const PRICE: int = 60
+
 const HITBOX_TOLERANCE:int = 16 # pixels allowed to overlap with other objects
 
-var min_coords: Vector2i = Vector2i.ZERO + Vector2i(HITBOX_TOLERANCE,HITBOX_TOLERANCE)
-var max_coords: Vector2i = Vector2i(SPRITE_DIMENSIONS,SPRITE_DIMENSIONS) - Vector2i(HITBOX_TOLERANCE,HITBOX_TOLERANCE)
+var shape_points: Array[Vector2]
 
-@warning_ignore("integer_division")
-var shape_points: Array[Vector2] = [
-	Vector2(min_coords.x,min_coords.y),
-	Vector2(min_coords.x,max_coords.y),
-	Vector2(max_coords.x,min_coords.y),
-	Vector2(max_coords.x,max_coords.y),
-	Vector2(max_coords.x/2,max_coords.y/2)
-]
+@onready var area_2d: Area2D = $Sprite2D/Area2D
 @onready var preview_image: Sprite2D = $Sprite2D
-#
+
+@export var building: PackedScene
+@export var price: int
+
 func _ready() -> void:
 	mouse_filter = MOUSE_FILTER_STOP
-#
+	shape_points = get_shape_points()
+
+func get_shape_points() -> Array[Vector2]:
+	var sprite_shape: Shape2D = building.instantiate().hitbox_shape
+	var min_coords: Vector2 = Vector2.ZERO + Vector2(HITBOX_TOLERANCE,HITBOX_TOLERANCE)
+	var max_coords: Vector2 = sprite_shape.size - Vector2(HITBOX_TOLERANCE,HITBOX_TOLERANCE)
+	return [
+		Vector2(min_coords.x,min_coords.y),
+		Vector2(min_coords.x,max_coords.y),
+		Vector2(max_coords.x,min_coords.y),
+		Vector2(max_coords.x,max_coords.y),
+		Vector2(max_coords.x/2,max_coords.y/2)
+	]
+
 #func _gui_input(event: InputEvent) -> void:
 	#if event is InputEventMouseButton:
 		#print("Mouse event - pressed:", event.pressed, "button_index:", event.button_index)
@@ -45,7 +52,8 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 			"offset": Vector2(0,64),
 			"shape_points": shape_points,
 			"area": $Sprite2D/Area2D.duplicate(),
-			"price": PRICE
+			"price": price,
+			"building": building
 		}
 	)
 

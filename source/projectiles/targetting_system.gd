@@ -27,6 +27,7 @@ func on_body_exited(body) -> void:
 
 func update_range(new_range: float) -> void:
 	range_shape.shape.radius = new_range
+	radius += 1
 
 func lock_target(method: int = targetting_methods.RANDOM) -> Vector2:
 	match method:

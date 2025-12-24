@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqs64piwnu8pi"]
+
+[ext_resource type="PackedScene" uid="uid://cqom6kxl3fsjd" path="res://source/GUI/upgrade_window/upgrade_window.tscn" id="1_klbcj"]
+[ext_resource type="PackedScene" uid="uid://3vrv2phvtk8g" path="res://source/GUI/side_menu/SideMenu.tscn" id="2_a3vn5"]
+[ext_resource type="StyleBox" uid="uid://b1q0w0d2ul4lb" path="res://source/themes/normal_paper_background_pannel.tres" id="3_m3w3i"]
+[ext_resource type="PackedScene" uid="uid://bi0lmgp8lrbfh" path="res://source/GUI/game_over/game_over.tscn" id="4_5ayqe"]
+
+[node name="GUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UpgradeWindow" parent="." instance=ExtResource("1_klbcj")]
+visible = false
+z_index = 2500
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="PauseScreen" type="Panel" parent="."]
+visible = false
+z_index = 2000
+layout_mode = 0
+offset_left = -6.0
+offset_top = -8.0
+offset_right = 1936.0
+offset_bottom = 1085.0
+
+[node name="PauseLabel" type="Label" parent="PauseScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -9.5
+offset_right = 20.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 72
+text = "Game Paused"
+
+[node name="SideMenu" parent="." instance=ExtResource("2_a3vn5")]
+z_index = 2000
+layout_mode = 0
+offset_left = 1537.0
+offset_top = 34.0
+offset_right = 1887.63
+offset_bottom = 1023.0
+theme_override_styles/panel = ExtResource("3_m3w3i")
+
+[node name="GameOver" parent="." instance=ExtResource("4_5ayqe")]
+visible = false
+z_index = 2100
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 664.0
+offset_top = 390.0
+offset_right = 664.0
+offset_bottom = 390.0
+size_flags_vertical = 4
+
+[node name="WaveIndicator" type="Label" parent="."]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 41.0
+offset_right = 337.0
+offset_bottom = 129.0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 64
+text = "Wave: 69"

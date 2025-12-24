@@ -1,4 +1,5 @@
 .godot/*
+docs/*
 *.bin
 *.cfg
 *.ctex

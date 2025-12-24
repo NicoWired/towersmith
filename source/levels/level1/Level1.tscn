@@ -1,14 +1,11 @@
-[gd_scene load_steps=11 format=4 uid="uid://dn8d5l7xn6mhg"]
+[gd_scene load_steps=8 format=4 uid="uid://dn8d5l7xn6mhg"]
 
 [ext_resource type="Script" uid="uid://d3tnfmqrs6bls" path="res://source/levels/level1/level1.gd" id="1_27su2"]
 [ext_resource type="TileSet" uid="uid://dbuoem2h83kg4" path="res://source/levels/levels_tile_set.tres" id="2_p21y6"]
 [ext_resource type="Script" uid="uid://uctgg1bdix62" path="res://source/controls/drop_control.gd" id="4_b6prr"]
 [ext_resource type="PackedScene" uid="uid://bpypkidrbqm2b" path="res://source/buildings/castle/castle.tscn" id="4_kf0gc"]
-[ext_resource type="PackedScene" uid="uid://3vrv2phvtk8g" path="res://source/GUI/side_menu/SideMenu.tscn" id="6_3eaae"]
-[ext_resource type="StyleBox" uid="uid://b1q0w0d2ul4lb" path="res://source/themes/normal_paper_background_pannel.tres" id="7_0vf1f"]
-[ext_resource type="PackedScene" uid="uid://cqom6kxl3fsjd" path="res://source/GUI/upgrade_window/upgrade_window.tscn" id="7_cn2cc"]
+[ext_resource type="PackedScene" uid="uid://cqs64piwnu8pi" path="res://source/GUI/level_gui/level_gui.tscn" id="6_27su2"]
 [ext_resource type="AudioStream" uid="uid://tyb7b87avs0m" path="res://assets/music/Loop_Market_Day.mp3" id="9_kf0gc"]
-[ext_resource type="PackedScene" uid="uid://bi0lmgp8lrbfh" path="res://source/GUI/game_over/game_over.tscn" id="10_vmlou"]
 
 [sub_resource type="Curve2D" id="Curve2D_h4l07"]
 _data = {
@@ -71,72 +68,4 @@ stream = ExtResource("9_kf0gc")
 volume_db = -12.0
 parameters/looping = true
 
-[node name="GUI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="UpgradeWindow" parent="GUI" instance=ExtResource("7_cn2cc")]
-visible = false
-z_index = 2500
-
-[node name="PauseScreen" type="Panel" parent="GUI"]
-visible = false
-z_index = 2000
-layout_mode = 0
-offset_left = -6.0
-offset_top = -8.0
-offset_right = 1936.0
-offset_bottom = 1085.0
-
-[node name="PauseLabel" type="Label" parent="GUI/PauseScreen"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -9.5
-offset_right = 20.0
-offset_bottom = 9.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/outline_size = 16
-theme_override_font_sizes/font_size = 72
-text = "Game Paused"
-
-[node name="SideMenu" parent="GUI" instance=ExtResource("6_3eaae")]
-z_index = 2000
-layout_mode = 0
-offset_left = 1537.0
-offset_top = 34.0
-offset_right = 1887.63
-offset_bottom = 1023.0
-theme_override_styles/panel = ExtResource("7_0vf1f")
-
-[node name="GameOver" parent="GUI" instance=ExtResource("10_vmlou")]
-visible = false
-z_index = 2100
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 664.0
-offset_top = 390.0
-offset_right = 664.0
-offset_bottom = 390.0
-size_flags_vertical = 4
-
-[node name="WaveIndicator" type="Label" parent="GUI"]
-layout_mode = 0
-offset_left = 61.0
-offset_top = 41.0
-offset_right = 337.0
-offset_bottom = 129.0
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 64
-text = "Wave: 69"
+[node name="GUI" parent="." instance=ExtResource("6_27su2")]

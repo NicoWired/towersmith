@@ -10,6 +10,8 @@ var base_upgradable_stat: UpgradableStat = preload("res://source/GUI/upgrade_win
 
 func _ready() -> void:
 	close_button.pressed.connect(on_close_pressed)
+	custom_minimum_size = Vector2(1228,705)
+	global_position = Vector2(253,206)
 
 func update(input_building: Tower) -> void:
 	for child in upgrades_container.get_children():

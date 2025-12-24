@@ -1,4 +1,4 @@
-class_name Level1
+class_name Level
 extends Node2D
 
 enum game_states {

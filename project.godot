@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Towersmith"
-run/main_scene="uid://dn8d5l7xn6mhg"
+run/main_scene="uid://c182k65uiwpye"
 config/features=PackedStringArray("4.5", "Mobile")
 run/max_fps=60
 config/icon="res://icon.svg"

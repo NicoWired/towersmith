@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://dn8d5l7xn6mhg"]
 
-[ext_resource type="Script" uid="uid://d3tnfmqrs6bls" path="res://source/levels/level1/level1.gd" id="1_27su2"]
+[ext_resource type="Script" uid="uid://d3tnfmqrs6bls" path="res://source/levels/level.gd" id="1_27su2"]
 [ext_resource type="TileSet" uid="uid://dbuoem2h83kg4" path="res://source/levels/levels_tile_set.tres" id="2_p21y6"]
 [ext_resource type="Script" uid="uid://uctgg1bdix62" path="res://source/controls/drop_control.gd" id="4_b6prr"]
 [ext_resource type="PackedScene" uid="uid://bpypkidrbqm2b" path="res://source/buildings/castle/castle.tscn" id="4_kf0gc"]

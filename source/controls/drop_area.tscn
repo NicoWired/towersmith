@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlrnh5b553fl"]
+
+[ext_resource type="Script" uid="uid://cnq58v2b3u4xq" path="res://source/controls/drop_area.gd" id="1_x80n8"]
+
+[node name="DropArea" type="Area2D"]
+script = ExtResource("1_x80n8")

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://c182k65uiwpye"]
+
+[ext_resource type="Script" uid="uid://diop4mo13reij" path="res://source/game/game.gd" id="1_2mpuo"]
+[ext_resource type="PackedScene" uid="uid://dn8d5l7xn6mhg" path="res://source/levels/layouts/Level1.tscn" id="3_7luj1"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_2mpuo")
+
+[node name="Level1" parent="." instance=ExtResource("3_7luj1")]
+
+[node name="FPSCounter" type="Label" parent="."]
+z_index = 4096
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -136.0
+offset_top = 17.0
+offset_right = -7.0
+offset_bottom = 83.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+text = "test"

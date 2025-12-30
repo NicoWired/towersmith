@@ -1,0 +1,17 @@
+[gd_resource type="StyleBoxTexture" load_steps=3 format=3 uid="uid://b1q0w0d2ul4lb"]
+
+[ext_resource type="Texture2D" uid="uid://c54boyokl6ee6" path="res://assets/tiny_swords/UI/Banners/Banner_Vertical.png" id="1_oebvk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cioj"]
+atlas = ExtResource("1_oebvk")
+region = Rect2(36, 31, 120, 131)
+
+[resource]
+texture = SubResource("AtlasTexture_4cioj")
+texture_margin_left = 17.6695
+texture_margin_top = 33.0404
+texture_margin_right = 17.9592
+texture_margin_bottom = 35.4039
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 120, 131)

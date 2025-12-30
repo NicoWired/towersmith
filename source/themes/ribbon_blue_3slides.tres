@@ -1,0 +1,15 @@
+[gd_resource type="StyleBoxTexture" load_steps=3 format=3 uid="uid://b0twvjuo5poxb"]
+
+[ext_resource type="Texture2D" uid="uid://2o2mjht14hh" path="res://assets/tiny_swords/UI/Ribbons/Ribbon_Blue_3Slides.png" id="1_a4dje"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oo50j"]
+atlas = ExtResource("1_a4dje")
+region = Rect2(3, 0, 186, 61)
+
+[resource]
+texture = SubResource("AtlasTexture_oo50j")
+texture_margin_left = 61.0
+texture_margin_top = 7.0
+texture_margin_right = 60.0
+texture_margin_bottom = 19.0
+region_rect = Rect2(0, 0, 186, 61)

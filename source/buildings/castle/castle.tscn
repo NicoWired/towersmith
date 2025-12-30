@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpypkidrbqm2b"]
+
+[ext_resource type="Script" uid="uid://cln0qot7ipb1x" path="res://source/buildings/castle/castle.gd" id="1_dh7h7"]
+[ext_resource type="Texture2D" uid="uid://dxgpd257pqvu8" path="res://assets/tiny_swords/Factions/Knights/Buildings/Castle/Castle_Blue.png" id="2_rbbds"]
+[ext_resource type="PackedScene" uid="uid://jivtsbkhwat3" path="res://source/decorations/fire.tscn" id="3_ewkj1"]
+[ext_resource type="Texture2D" uid="uid://djxsmikupb1ig" path="res://assets/tiny_swords/Factions/Knights/Buildings/Castle/Castle_Destroyed.png" id="3_ld7uc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ld7uc"]
+size = Vector2(300, 240)
+
+[node name="Castle" type="Node2D"]
+script = ExtResource("1_dh7h7")
+main_texture = ExtResource("2_rbbds")
+hitbox_shape = SubResource("RectangleShape2D_ld7uc")
+metadata/_custom_type_script = "uid://bfdtrtvcophpf"
+
+[node name="DestroyedSprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_ld7uc")
+
+[node name="FireAnimations" type="Node2D" parent="."]
+
+[node name="Fire" parent="FireAnimations" instance=ExtResource("3_ewkj1")]
+visible = false
+position = Vector2(0, -40)
+frame_progress = 0.633238
+
+[node name="Fire2" parent="FireAnimations" instance=ExtResource("3_ewkj1")]
+visible = false
+position = Vector2(-102, 47)
+frame_progress = 0.633238
+
+[node name="Fire3" parent="FireAnimations" instance=ExtResource("3_ewkj1")]
+visible = false
+position = Vector2(102, 20)
+frame_progress = 0.633238

@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2n4bs8hk4dnc"]
+
+[ext_resource type="Script" uid="uid://dlk4e0qnqp0jf" path="res://source/GUI/upgrade_window/upgradable_stat.gd" id="1_38us2"]
+[ext_resource type="StyleBox" uid="uid://wmy5o54pt4me" path="res://source/themes/carved_3side_pannel.tres" id="2_87moa"]
+[ext_resource type="Texture2D" uid="uid://c737pfl5qb0de" path="res://assets/tiny_swords/Resources/Resources/G_Idle_(NoShadow)_cropped.png" id="3_1ia86"]
+[ext_resource type="FontFile" uid="uid://bbgkgb8kgquv0" path="res://assets/fonts/ModernAntiqua-Regular.ttf" id="3_hkkod"]
+[ext_resource type="Texture2D" uid="uid://08sp1gvq3syf" path="res://assets/tiny_swords/UI/Buttons/BUTTON_PLUS_ON.png" id="5_hkkod"]
+[ext_resource type="Texture2D" uid="uid://bkfqge410myds" path="res://assets/tiny_swords/UI/Buttons/BUTTON_PLUS_OFF.png" id="6_8f3g7"]
+
+[node name="UpgradableStat" type="Control"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+script = ExtResource("1_38us2")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -40.7789
+offset_bottom = -3.87566
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("2_87moa")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="StatContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="StatNameLabel" type="Label" parent="PanelContainer/MarginContainer/StatContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Tower Range:"
+
+[node name="UpgradeLevelLabel" type="Label" parent="PanelContainer/MarginContainer/StatContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_hkkod")
+theme_override_font_sizes/font_size = 32
+text = "150"
+
+[node name="GoldIcon" type="TextureRect" parent="PanelContainer/MarginContainer/StatContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("3_1ia86")
+expand_mode = 3
+stretch_mode = 2
+
+[node name="CostLabel" type="Label" parent="PanelContainer/MarginContainer/StatContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "123"
+
+[node name="UpgradeButton" type="TextureButton" parent="PanelContainer/MarginContainer/StatContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+texture_normal = ExtResource("5_hkkod")
+texture_pressed = ExtResource("6_8f3g7")
+texture_disabled = ExtResource("6_8f3g7")
+stretch_mode = 0

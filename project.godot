@@ -1,0 +1,67 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Towersmith"
+run/main_scene="uid://c182k65uiwpye"
+config/features=PackedStringArray("4.5", "Mobile")
+run/max_fps=60
+config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalEvents="*res://source/autoloaders/global_events.gd"
+Economy="*res://source/autoloaders/economy.gd"
+LoadAssets="*res://source/autoloaders/load_assets.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="viewport"
+window/stretch/aspect="ignore"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "yellow",
+"res://source/": "blue",
+"res://source/GUI/": "green",
+"res://source/controls/": "green",
+"res://source/themes/": "pink"
+}
+
+[global_group]
+
+buildings=""
+sound=""
+
+[gui]
+
+theme/custom="uid://cnh4lw4smnxj"
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://localization.en.translation", "res://localization.es.translation")
+locale/include_text_server_data=true
+
+[layer_names]
+
+2d_physics/layer_1="Castle"
+2d_physics/layer_2="Projectile"
+2d_physics/layer_3="Enemy"
+2d_physics/layer_4="Tower"
+2d_physics/layer_5="Building"
+
+[rendering]
+
+renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

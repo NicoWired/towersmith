@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://br3q7nprega88"]
+
+[ext_resource type="Texture2D" uid="uid://c3sxe6rqhq8go" path="res://assets/tiny_swords/UI/Banners/Carved_9Slides.png" id="1_u1x4u"]
+[ext_resource type="PackedScene" uid="uid://bx2hmi8jke7eb" path="res://source/controls/PickableTower.tscn" id="2_vd8dd"]
+[ext_resource type="Texture2D" uid="uid://c737pfl5qb0de" path="res://assets/tiny_swords/Resources/Resources/G_Idle_(NoShadow)_cropped.png" id="3_roj5m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o666q"]
+atlas = ExtResource("1_u1x4u")
+region = Rect2(2, 1, 189, 190)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vd8dd"]
+texture = SubResource("AtlasTexture_o666q")
+texture_margin_left = 61.6162
+texture_margin_top = 54.874
+texture_margin_right = 62.0224
+texture_margin_bottom = 69.7958
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="BuyableTower" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_vd8dd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PickableTower" parent="VBoxContainer" instance=ExtResource("2_vd8dd")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("3_roj5m")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "60"

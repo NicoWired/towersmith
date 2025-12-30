@@ -1,0 +1,89 @@
+[gd_scene load_steps=8 format=3 uid="uid://bi0lmgp8lrbfh"]
+
+[ext_resource type="StyleBox" uid="uid://b1q0w0d2ul4lb" path="res://source/themes/normal_paper_background_pannel.tres" id="1_5ipev"]
+[ext_resource type="Script" uid="uid://le65tup4brpa" path="res://source/GUI/game_over/game_over.gd" id="1_r6o3y"]
+[ext_resource type="Texture2D" uid="uid://y6y62td8ra1a" path="res://assets/tiny_swords/UI/Buttons/Button_Red.png" id="2_ayv2q"]
+[ext_resource type="Texture2D" uid="uid://nqkynkb62r4q" path="res://assets/tiny_swords/UI/Buttons/Button_Red_Pressed.png" id="3_r6o3y"]
+[ext_resource type="Texture2D" uid="uid://bxpp8gi1p46sk" path="res://assets/tiny_swords/UI/Buttons/Button_Blue.png" id="5_r6o3y"]
+[ext_resource type="StyleBox" uid="uid://b0twvjuo5poxb" path="res://source/themes/ribbon_blue_3slides.tres" id="6_ayv2q"]
+[ext_resource type="Texture2D" uid="uid://cfoyuwe5nrcw4" path="res://assets/tiny_swords/UI/Buttons/Button_Blue_Pressed.png" id="6_eu24g"]
+
+[node name="GameOver" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_r6o3y")
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_left = 100.0
+offset_right = 420.0
+offset_bottom = 291.444
+theme_override_constants/margin_top = 84
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("1_5ipev")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayAgainLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 48
+text = "Play again?"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="DeclineButton" type="TextureButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("2_ayv2q")
+texture_pressed = ExtResource("3_r6o3y")
+
+[node name="AcceptButton" type="TextureButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("5_r6o3y")
+texture_pressed = ExtResource("6_eu24g")
+
+[node name="TitlePanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(520, 0)
+layout_mode = 2
+offset_right = 516.0
+offset_bottom = 122.0
+theme_override_styles/panel = ExtResource("6_ayv2q")
+
+[node name="MarginContainer" type="MarginContainer" parent="TitlePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="TitleLabel" type="Label" parent="TitlePanel/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 72
+text = "GAME OVER"

@@ -9,3 +9,4 @@
 - [Enemies](pages/enemies.md)
 - [Maps](pages/maps.md)
 - [Economy](pages/economy.md)
+- [Principles](pages/principles.md)
